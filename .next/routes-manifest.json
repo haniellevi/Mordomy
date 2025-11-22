@@ -1,0 +1,236 @@
+{
+  "version": 3,
+  "pages404": true,
+  "caseSensitive": false,
+  "basePath": "",
+  "redirects": [
+    {
+      "source": "/:path+/",
+      "destination": "/:path+",
+      "internal": true,
+      "priority": true,
+      "statusCode": 308,
+      "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"
+    }
+  ],
+  "headers": [],
+  "rewrites": {
+    "beforeFiles": [],
+    "afterFiles": [],
+    "fallback": []
+  },
+  "dynamicRoutes": [
+    {
+      "page": "/annual/[year]",
+      "regex": "^/annual/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPyear": "nxtPyear"
+      },
+      "namedRegex": "^/annual/(?<nxtPyear>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/api/auth/[...nextauth]",
+      "regex": "^/api/auth/(.+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPnextauth": "nxtPnextauth"
+      },
+      "namedRegex": "^/api/auth/(?<nxtPnextauth>.+?)(?:/)?$"
+    },
+    {
+      "page": "/api/expenses/[id]",
+      "regex": "^/api/expenses/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/api/expenses/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/api/incomes/[id]",
+      "regex": "^/api/incomes/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/api/incomes/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/api/investments/[id]",
+      "regex": "^/api/investments/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/api/investments/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/api/misc-expenses/[id]",
+      "regex": "^/api/misc\\-expenses/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/api/misc\\-expenses/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/api/months/[id]",
+      "regex": "^/api/months/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/api/months/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/[year]/[month]",
+      "regex": "^/([^/]+?)/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPyear": "nxtPyear",
+        "nxtPmonth": "nxtPmonth"
+      },
+      "namedRegex": "^/(?<nxtPyear>[^/]+?)/(?<nxtPmonth>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/[year]/[month]/expenses",
+      "regex": "^/([^/]+?)/([^/]+?)/expenses(?:/)?$",
+      "routeKeys": {
+        "nxtPyear": "nxtPyear",
+        "nxtPmonth": "nxtPmonth"
+      },
+      "namedRegex": "^/(?<nxtPyear>[^/]+?)/(?<nxtPmonth>[^/]+?)/expenses(?:/)?$"
+    },
+    {
+      "page": "/[year]/[month]/incomes",
+      "regex": "^/([^/]+?)/([^/]+?)/incomes(?:/)?$",
+      "routeKeys": {
+        "nxtPyear": "nxtPyear",
+        "nxtPmonth": "nxtPmonth"
+      },
+      "namedRegex": "^/(?<nxtPyear>[^/]+?)/(?<nxtPmonth>[^/]+?)/incomes(?:/)?$"
+    },
+    {
+      "page": "/[year]/[month]/investments",
+      "regex": "^/([^/]+?)/([^/]+?)/investments(?:/)?$",
+      "routeKeys": {
+        "nxtPyear": "nxtPyear",
+        "nxtPmonth": "nxtPmonth"
+      },
+      "namedRegex": "^/(?<nxtPyear>[^/]+?)/(?<nxtPmonth>[^/]+?)/investments(?:/)?$"
+    },
+    {
+      "page": "/[year]/[month]/misc-expenses",
+      "regex": "^/([^/]+?)/([^/]+?)/misc\\-expenses(?:/)?$",
+      "routeKeys": {
+        "nxtPyear": "nxtPyear",
+        "nxtPmonth": "nxtPmonth"
+      },
+      "namedRegex": "^/(?<nxtPyear>[^/]+?)/(?<nxtPmonth>[^/]+?)/misc\\-expenses(?:/)?$"
+    }
+  ],
+  "staticRoutes": [
+    {
+      "page": "/",
+      "regex": "^/(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/(?:/)?$"
+    },
+    {
+      "page": "/_global-error",
+      "regex": "^/_global\\-error(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/_global\\-error(?:/)?$"
+    },
+    {
+      "page": "/_not-found",
+      "regex": "^/_not\\-found(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/_not\\-found(?:/)?$"
+    },
+    {
+      "page": "/api/auth/signup",
+      "regex": "^/api/auth/signup(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/auth/signup(?:/)?$"
+    },
+    {
+      "page": "/api/expenses",
+      "regex": "^/api/expenses(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/expenses(?:/)?$"
+    },
+    {
+      "page": "/api/incomes",
+      "regex": "^/api/incomes(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/incomes(?:/)?$"
+    },
+    {
+      "page": "/api/investments",
+      "regex": "^/api/investments(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/investments(?:/)?$"
+    },
+    {
+      "page": "/api/misc-expenses",
+      "regex": "^/api/misc\\-expenses(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/misc\\-expenses(?:/)?$"
+    },
+    {
+      "page": "/api/months",
+      "regex": "^/api/months(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/months(?:/)?$"
+    },
+    {
+      "page": "/api/months/duplicate",
+      "regex": "^/api/months/duplicate(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/months/duplicate(?:/)?$"
+    },
+    {
+      "page": "/api/register",
+      "regex": "^/api/register(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/register(?:/)?$"
+    },
+    {
+      "page": "/landing",
+      "regex": "^/landing(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/landing(?:/)?$"
+    },
+    {
+      "page": "/login",
+      "regex": "^/login(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/login(?:/)?$"
+    },
+    {
+      "page": "/register",
+      "regex": "^/register(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/register(?:/)?$"
+    },
+    {
+      "page": "/signup",
+      "regex": "^/signup(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/signup(?:/)?$"
+    }
+  ],
+  "dataRoutes": [],
+  "rsc": {
+    "header": "rsc",
+    "varyHeader": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+    "prefetchHeader": "next-router-prefetch",
+    "didPostponeHeader": "x-nextjs-postponed",
+    "contentTypeHeader": "text/x-component",
+    "suffix": ".rsc",
+    "prefetchSuffix": ".prefetch.rsc",
+    "prefetchSegmentHeader": "next-router-segment-prefetch",
+    "prefetchSegmentSuffix": ".segment.rsc",
+    "prefetchSegmentDirSuffix": ".segments",
+    "clientParamParsing": false,
+    "dynamicRSCPrerender": false
+  },
+  "rewriteHeaders": {
+    "pathHeader": "x-nextjs-rewritten-path",
+    "queryHeader": "x-nextjs-rewritten-query"
+  }
+}

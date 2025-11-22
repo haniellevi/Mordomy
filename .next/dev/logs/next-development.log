@@ -1,23 +1,156 @@
-[00:00:01.302] Server  LOG      ✓ Ready in 833ms
-[00:00:04.359] Server  LOG      ○ Compiling /[year]/[month] ...
-[00:00:05.770] Server  LOG     prisma:query "SELECT \"public\".\"Month\".\"id\", \"public\".\"Month\".\"userId\", \"public\".\"Month\".\"month\", \"public\".\"Month\".\"year\", \"public\".\"Month\".\"isOpen\", \"public\".\"Month\".\"createdAt\", \"public\".\"Month\".\"updatedAt\" FROM \"public\".\"Month\" WHERE (\"public\".\"Month\".\"userId\" = $1 AND \"public\".\"Month\".\"year\" = $2 AND \"public\".\"Month\".\"month\" = $3) LIMIT $4 OFFSET $5"
-[00:00:05.771] Server  LOG     prisma:query "SELECT \"public\".\"Income\".\"id\", \"public\".\"Income\".\"monthId\", \"public\".\"Income\".\"description\", \"public\".\"Income\".\"amount\", \"public\".\"Income\".\"dayOfMonth\", \"public\".\"Income\".\"order\", \"public\".\"Income\".\"createdAt\", \"public\".\"Income\".\"updatedAt\" FROM \"public\".\"Income\" WHERE \"public\".\"Income\".\"monthId\" IN ($1) OFFSET $2"
-[00:00:05.771] Server  LOG     prisma:query "SELECT \"public\".\"Expense\".\"id\", \"public\".\"Expense\".\"monthId\", \"public\".\"Expense\".\"description\", \"public\".\"Expense\".\"totalAmount\", \"public\".\"Expense\".\"paidAmount\", \"public\".\"Expense\".\"dayOfMonth\", \"public\".\"Expense\".\"order\", \"public\".\"Expense\".\"type\"::text, \"public\".\"Expense\".\"createdAt\", \"public\".\"Expense\".\"updatedAt\" FROM \"public\".\"Expense\" WHERE \"public\".\"Expense\".\"monthId\" IN ($1) OFFSET $2"
-[00:00:05.771] Server  LOG     prisma:query "SELECT \"public\".\"Investment\".\"id\", \"public\".\"Investment\".\"monthId\", \"public\".\"Investment\".\"description\", \"public\".\"Investment\".\"amount\", \"public\".\"Investment\".\"dayOfMonth\", \"public\".\"Investment\".\"order\", \"public\".\"Investment\".\"createdAt\", \"public\".\"Investment\".\"updatedAt\" FROM \"public\".\"Investment\" WHERE \"public\".\"Investment\".\"monthId\" IN ($1) OFFSET $2"
-[00:00:05.771] Server  LOG     prisma:query "SELECT \"public\".\"MiscExpense\".\"id\", \"public\".\"MiscExpense\".\"monthId\", \"public\".\"MiscExpense\".\"description\", \"public\".\"MiscExpense\".\"amount\", \"public\".\"MiscExpense\".\"dayOfMonth\", \"public\".\"MiscExpense\".\"order\", \"public\".\"MiscExpense\".\"createdAt\", \"public\".\"MiscExpense\".\"updatedAt\" FROM \"public\".\"MiscExpense\" WHERE \"public\".\"MiscExpense\".\"monthId\" IN ($1) OFFSET $2"
-[00:00:05.777] Server  LOG     prisma:query "SELECT \"public\".\"Month\".\"id\", \"public\".\"Month\".\"year\", \"public\".\"Month\".\"month\" FROM \"public\".\"Month\" WHERE \"public\".\"Month\".\"userId\" = $1 ORDER BY \"public\".\"Month\".\"year\" ASC, \"public\".\"Month\".\"month\" ASC OFFSET $2"
-[00:00:06.229] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:10.578] Server  LOG     prisma:query "SELECT \"public\".\"Month\".\"id\", \"public\".\"Month\".\"userId\", \"public\".\"Month\".\"month\", \"public\".\"Month\".\"year\", \"public\".\"Month\".\"isOpen\", \"public\".\"Month\".\"createdAt\", \"public\".\"Month\".\"updatedAt\" FROM \"public\".\"Month\" WHERE (\"public\".\"Month\".\"userId\" = $1 AND \"public\".\"Month\".\"year\" = $2 AND \"public\".\"Month\".\"month\" = $3) LIMIT $4 OFFSET $5"
-[00:00:10.579] Server  LOG     prisma:query "SELECT \"public\".\"Income\".\"id\", \"public\".\"Income\".\"monthId\", \"public\".\"Income\".\"description\", \"public\".\"Income\".\"amount\", \"public\".\"Income\".\"dayOfMonth\", \"public\".\"Income\".\"order\", \"public\".\"Income\".\"createdAt\", \"public\".\"Income\".\"updatedAt\" FROM \"public\".\"Income\" WHERE \"public\".\"Income\".\"monthId\" IN ($1) ORDER BY \"public\".\"Income\".\"order\" ASC OFFSET $2"
-[00:00:16.799] Server  LOG     prisma:query "SELECT \"public\".\"Month\".\"id\", \"public\".\"Month\".\"userId\", \"public\".\"Month\".\"month\", \"public\".\"Month\".\"year\", \"public\".\"Month\".\"isOpen\", \"public\".\"Month\".\"createdAt\", \"public\".\"Month\".\"updatedAt\" FROM \"public\".\"Month\" WHERE (\"public\".\"Month\".\"userId\" = $1 AND \"public\".\"Month\".\"year\" = $2 AND \"public\".\"Month\".\"month\" = $3) LIMIT $4 OFFSET $5"
-[00:00:16.800] Server  LOG     prisma:query "SELECT \"public\".\"Income\".\"id\", \"public\".\"Income\".\"monthId\", \"public\".\"Income\".\"description\", \"public\".\"Income\".\"amount\", \"public\".\"Income\".\"dayOfMonth\", \"public\".\"Income\".\"order\", \"public\".\"Income\".\"createdAt\", \"public\".\"Income\".\"updatedAt\" FROM \"public\".\"Income\" WHERE \"public\".\"Income\".\"monthId\" IN ($1) OFFSET $2"
-[00:00:16.801] Server  LOG     prisma:query "SELECT \"public\".\"Expense\".\"id\", \"public\".\"Expense\".\"monthId\", \"public\".\"Expense\".\"description\", \"public\".\"Expense\".\"totalAmount\", \"public\".\"Expense\".\"paidAmount\", \"public\".\"Expense\".\"dayOfMonth\", \"public\".\"Expense\".\"order\", \"public\".\"Expense\".\"type\"::text, \"public\".\"Expense\".\"createdAt\", \"public\".\"Expense\".\"updatedAt\" FROM \"public\".\"Expense\" WHERE \"public\".\"Expense\".\"monthId\" IN ($1) OFFSET $2"
-[00:00:16.801] Server  LOG     prisma:query "SELECT \"public\".\"Investment\".\"id\", \"public\".\"Investment\".\"monthId\", \"public\".\"Investment\".\"description\", \"public\".\"Investment\".\"amount\", \"public\".\"Investment\".\"dayOfMonth\", \"public\".\"Investment\".\"order\", \"public\".\"Investment\".\"createdAt\", \"public\".\"Investment\".\"updatedAt\" FROM \"public\".\"Investment\" WHERE \"public\".\"Investment\".\"monthId\" IN ($1) OFFSET $2"
-[00:00:16.802] Server  LOG     prisma:query "SELECT \"public\".\"MiscExpense\".\"id\", \"public\".\"MiscExpense\".\"monthId\", \"public\".\"MiscExpense\".\"description\", \"public\".\"MiscExpense\".\"amount\", \"public\".\"MiscExpense\".\"dayOfMonth\", \"public\".\"MiscExpense\".\"order\", \"public\".\"MiscExpense\".\"createdAt\", \"public\".\"MiscExpense\".\"updatedAt\" FROM \"public\".\"MiscExpense\" WHERE \"public\".\"MiscExpense\".\"monthId\" IN ($1) OFFSET $2"
-[00:00:16.805] Server  LOG     prisma:query "SELECT \"public\".\"Month\".\"id\", \"public\".\"Month\".\"year\", \"public\".\"Month\".\"month\" FROM \"public\".\"Month\" WHERE \"public\".\"Month\".\"userId\" = $1 ORDER BY \"public\".\"Month\".\"year\" ASC, \"public\".\"Month\".\"month\" ASC OFFSET $2"
-[00:09:34.383] Server  LOG     prisma:query "SELECT \"public\".\"Month\".\"id\", \"public\".\"Month\".\"userId\", \"public\".\"Month\".\"month\", \"public\".\"Month\".\"year\", \"public\".\"Month\".\"isOpen\", \"public\".\"Month\".\"createdAt\", \"public\".\"Month\".\"updatedAt\" FROM \"public\".\"Month\" WHERE (\"public\".\"Month\".\"userId\" = $1 AND \"public\".\"Month\".\"year\" = $2 AND \"public\".\"Month\".\"month\" = $3) LIMIT $4 OFFSET $5"
-[00:09:34.385] Server  LOG     prisma:query "SELECT \"public\".\"Income\".\"id\", \"public\".\"Income\".\"monthId\", \"public\".\"Income\".\"description\", \"public\".\"Income\".\"amount\", \"public\".\"Income\".\"dayOfMonth\", \"public\".\"Income\".\"order\", \"public\".\"Income\".\"createdAt\", \"public\".\"Income\".\"updatedAt\" FROM \"public\".\"Income\" WHERE \"public\".\"Income\".\"monthId\" IN ($1) OFFSET $2"
-[00:09:34.387] Server  LOG     prisma:query "SELECT \"public\".\"Expense\".\"id\", \"public\".\"Expense\".\"monthId\", \"public\".\"Expense\".\"description\", \"public\".\"Expense\".\"totalAmount\", \"public\".\"Expense\".\"paidAmount\", \"public\".\"Expense\".\"dayOfMonth\", \"public\".\"Expense\".\"order\", \"public\".\"Expense\".\"type\"::text, \"public\".\"Expense\".\"createdAt\", \"public\".\"Expense\".\"updatedAt\" FROM \"public\".\"Expense\" WHERE \"public\".\"Expense\".\"monthId\" IN ($1) OFFSET $2"
-[00:09:34.389] Server  LOG     prisma:query "SELECT \"public\".\"Investment\".\"id\", \"public\".\"Investment\".\"monthId\", \"public\".\"Investment\".\"description\", \"public\".\"Investment\".\"amount\", \"public\".\"Investment\".\"dayOfMonth\", \"public\".\"Investment\".\"order\", \"public\".\"Investment\".\"createdAt\", \"public\".\"Investment\".\"updatedAt\" FROM \"public\".\"Investment\" WHERE \"public\".\"Investment\".\"monthId\" IN ($1) OFFSET $2"
-[00:09:34.391] Server  LOG     prisma:query "SELECT \"public\".\"MiscExpense\".\"id\", \"public\".\"MiscExpense\".\"monthId\", \"public\".\"MiscExpense\".\"description\", \"public\".\"MiscExpense\".\"amount\", \"public\".\"MiscExpense\".\"dayOfMonth\", \"public\".\"MiscExpense\".\"order\", \"public\".\"MiscExpense\".\"createdAt\", \"public\".\"MiscExpense\".\"updatedAt\" FROM \"public\".\"MiscExpense\" WHERE \"public\".\"MiscExpense\".\"monthId\" IN ($1) OFFSET $2"
-[00:09:34.396] Server  LOG     prisma:query "SELECT \"public\".\"Month\".\"id\", \"public\".\"Month\".\"year\", \"public\".\"Month\".\"month\" FROM \"public\".\"Month\" WHERE \"public\".\"Month\".\"userId\" = $1 ORDER BY \"public\".\"Month\".\"year\" ASC, \"public\".\"Month\".\"month\" ASC OFFSET $2"
+[00:00:01.148] Server  LOG      ✓ Ready in 766ms
+[00:00:07.580] Server  ERROR   C:\Users\hanie\OneDrive\Documentos\workspace\Mordomy\.next\dev\server\chunks\ssr\[root-of-the-server]__dc2ab019._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:00:07.582] Server  ERROR    ⨯ PrismaClientInitializationError: 
+Invalid `{imported module ./src/lib/prisma.ts}["prisma"].month.findFirst()` invocation in
+C:\Users\hanie\OneDrive\Documentos\workspace\Mordomy\.next\dev\server\chunks\ssr\[root-of-the-server]__dc2ab019._.js:219:164
+
+  216     (0, {imported module ./nodemodules/next/dist/client/components/navigation.react-server.js}["redirect"])("/landing");
+  217 }
+  218 // Tentar encontrar o último mês acessado ou o mais recente
+→ 219 const latestMonth = await {imported module ./src/lib/prisma.ts}["prisma"].month.findFirst(
+Can't reach database server at `localhost:5432`
+
+Please make sure your database server is running at `localhost:5432`.
+[00:00:07.738] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:08.751] Browser ERROR   uncaughtError: PrismaClientInitializationError: 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].month.findFirst()` invocation in
+C:\Users\hanie\OneDrive\Documentos\workspace\Mordomy\.next\dev\server\chunks\ssr\[root-of-the-server]__dc2ab019._.js:219:164
+
+  216     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$components$2f$navigation$2e$react$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["redirect"])("/landing");
+  217 }
+  218 // Tentar encontrar o último mês acessado ou o mais recente
+→ 219 const latestMonth = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].month.findFirst(
+Can't reach database server at `localhost:5432`
+
+Please make sure your database server is running at `localhost:5432`.
+[00:00:14.925] Server  ERROR   C:\Users\hanie\OneDrive\Documentos\workspace\Mordomy\.next\dev\server\chunks\ssr\[root-of-the-server]__dc2ab019._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:00:14.927] Server  ERROR    ⨯ PrismaClientInitializationError: 
+Invalid `{imported module ./src/lib/prisma.ts}["prisma"].month.findFirst()` invocation in
+C:\Users\hanie\OneDrive\Documentos\workspace\Mordomy\.next\dev\server\chunks\ssr\[root-of-the-server]__dc2ab019._.js:219:164
+
+  216     (0, {imported module ./nodemodules/next/dist/client/components/navigation.react-server.js}["redirect"])("/landing");
+  217 }
+  218 // Tentar encontrar o último mês acessado ou o mais recente
+→ 219 const latestMonth = await {imported module ./src/lib/prisma.ts}["prisma"].month.findFirst(
+Can't reach database server at `localhost:5432`
+
+Please make sure your database server is running at `localhost:5432`.
+[00:00:15.047] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:15.047] Browser ERROR   uncaughtError: PrismaClientInitializationError: 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].month.findFirst()` invocation in
+C:\Users\hanie\OneDrive\Documentos\workspace\Mordomy\.next\dev\server\chunks\ssr\[root-of-the-server]__dc2ab019._.js:219:164
+
+  216     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$components$2f$navigation$2e$react$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["redirect"])("/landing");
+  217 }
+  218 // Tentar encontrar o último mês acessado ou o mais recente
+→ 219 const latestMonth = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].month.findFirst(
+Can't reach database server at `localhost:5432`
+
+Please make sure your database server is running at `localhost:5432`.
+[00:06:11.953] Server  LOG        Reload env: .env
+[00:06:16.130] Server  ERROR   C:\Users\hanie\OneDrive\Documentos\workspace\Mordomy\.next\dev\server\chunks\ssr\[root-of-the-server]__dc2ab019._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:06:16.131] Server  ERROR    ⨯ PrismaClientInitializationError: 
+Invalid `{imported module ./src/lib/prisma.ts}["prisma"].month.findFirst()` invocation in
+C:\Users\hanie\OneDrive\Documentos\workspace\Mordomy\.next\dev\server\chunks\ssr\[root-of-the-server]__dc2ab019._.js:219:164
+
+  216     (0, {imported module ./nodemodules/next/dist/client/components/navigation.react-server.js}["redirect"])("/landing");
+  217 }
+  218 // Tentar encontrar o último mês acessado ou o mais recente
+→ 219 const latestMonth = await {imported module ./src/lib/prisma.ts}["prisma"].month.findFirst(
+Can't reach database server at `localhost:5432`
+
+Please make sure your database server is running at `localhost:5432`.
+[00:06:16.244] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:06:16.751] Browser ERROR   uncaughtError: PrismaClientInitializationError: 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].month.findFirst()` invocation in
+C:\Users\hanie\OneDrive\Documentos\workspace\Mordomy\.next\dev\server\chunks\ssr\[root-of-the-server]__dc2ab019._.js:219:164
+
+  216     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$components$2f$navigation$2e$react$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["redirect"])("/landing");
+  217 }
+  218 // Tentar encontrar o último mês acessado ou o mais recente
+→ 219 const latestMonth = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].month.findFirst(
+Can't reach database server at `localhost:5432`
+
+Please make sure your database server is running at `localhost:5432`.
+[00:07:15.324] Server  LOG        Reload env: .env
+[00:07:19.485] Server  ERROR   C:\Users\hanie\OneDrive\Documentos\workspace\Mordomy\.next\dev\server\chunks\ssr\[root-of-the-server]__dc2ab019._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:07:19.486] Server  ERROR    ⨯ PrismaClientInitializationError: 
+Invalid `{imported module ./src/lib/prisma.ts}["prisma"].month.findFirst()` invocation in
+C:\Users\hanie\OneDrive\Documentos\workspace\Mordomy\.next\dev\server\chunks\ssr\[root-of-the-server]__dc2ab019._.js:219:164
+
+  216     (0, {imported module ./nodemodules/next/dist/client/components/navigation.react-server.js}["redirect"])("/landing");
+  217 }
+  218 // Tentar encontrar o último mês acessado ou o mais recente
+→ 219 const latestMonth = await {imported module ./src/lib/prisma.ts}["prisma"].month.findFirst(
+Can't reach database server at `localhost:5432`
+
+Please make sure your database server is running at `localhost:5432`.
+[00:07:19.609] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:07:19.750] Browser ERROR   uncaughtError: PrismaClientInitializationError: 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].month.findFirst()` invocation in
+C:\Users\hanie\OneDrive\Documentos\workspace\Mordomy\.next\dev\server\chunks\ssr\[root-of-the-server]__dc2ab019._.js:219:164
+
+  216     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$components$2f$navigation$2e$react$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["redirect"])("/landing");
+  217 }
+  218 // Tentar encontrar o último mês acessado ou o mais recente
+→ 219 const latestMonth = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].month.findFirst(
+Can't reach database server at `localhost:5432`
+
+Please make sure your database server is running at `localhost:5432`.
+[00:07:58.342] Server  LOG        Reload env: .env
+[00:08:02.553] Server  ERROR   C:\Users\hanie\OneDrive\Documentos\workspace\Mordomy\.next\dev\server\chunks\ssr\[root-of-the-server]__dc2ab019._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:08:02.554] Server  ERROR    ⨯ PrismaClientInitializationError: 
+Invalid `{imported module ./src/lib/prisma.ts}["prisma"].month.findFirst()` invocation in
+C:\Users\hanie\OneDrive\Documentos\workspace\Mordomy\.next\dev\server\chunks\ssr\[root-of-the-server]__dc2ab019._.js:219:164
+
+  216     (0, {imported module ./nodemodules/next/dist/client/components/navigation.react-server.js}["redirect"])("/landing");
+  217 }
+  218 // Tentar encontrar o último mês acessado ou o mais recente
+→ 219 const latestMonth = await {imported module ./src/lib/prisma.ts}["prisma"].month.findFirst(
+Can't reach database server at `localhost:5432`
+
+Please make sure your database server is running at `localhost:5432`.
+[00:08:02.672] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:08:03.750] Browser ERROR   uncaughtError: PrismaClientInitializationError: 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].month.findFirst()` invocation in
+C:\Users\hanie\OneDrive\Documentos\workspace\Mordomy\.next\dev\server\chunks\ssr\[root-of-the-server]__dc2ab019._.js:219:164
+
+  216     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$components$2f$navigation$2e$react$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["redirect"])("/landing");
+  217 }
+  218 // Tentar encontrar o último mês acessado ou o mais recente
+→ 219 const latestMonth = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].month.findFirst(
+Can't reach database server at `localhost:5432`
+
+Please make sure your database server is running at `localhost:5432`.
+[00:17:11.419] Server  LOG        Reload env: .env
+[00:17:15.568] Server  ERROR   C:\Users\hanie\OneDrive\Documentos\workspace\Mordomy\.next\dev\server\chunks\ssr\[root-of-the-server]__dc2ab019._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:17:15.569] Server  ERROR    ⨯ PrismaClientInitializationError: 
+Invalid `{imported module ./src/lib/prisma.ts}["prisma"].month.findFirst()` invocation in
+C:\Users\hanie\OneDrive\Documentos\workspace\Mordomy\.next\dev\server\chunks\ssr\[root-of-the-server]__dc2ab019._.js:219:164
+
+  216     (0, {imported module ./nodemodules/next/dist/client/components/navigation.react-server.js}["redirect"])("/landing");
+  217 }
+  218 // Tentar encontrar o último mês acessado ou o mais recente
+→ 219 const latestMonth = await {imported module ./src/lib/prisma.ts}["prisma"].month.findFirst(
+Can't reach database server at `localhost:5432`
+
+Please make sure your database server is running at `localhost:5432`.
+[00:17:15.725] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:17:16.752] Browser ERROR   uncaughtError: PrismaClientInitializationError: 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].month.findFirst()` invocation in
+C:\Users\hanie\OneDrive\Documentos\workspace\Mordomy\.next\dev\server\chunks\ssr\[root-of-the-server]__dc2ab019._.js:219:164
+
+  216     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$components$2f$navigation$2e$react$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["redirect"])("/landing");
+  217 }
+  218 // Tentar encontrar o último mês acessado ou o mais recente
+→ 219 const latestMonth = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].month.findFirst(
+Can't reach database server at `localhost:5432`
+
+Please make sure your database server is running at `localhost:5432`.
+[00:18:56.282] Server  LOG        Reload env: .env
+[00:18:56.652] Server  WARN    [next-auth][warn][NEXTAUTH_URL] "\nhttps://next-auth.js.org/warnings#nextauth_url"
+[00:18:56.652] Server  WARN    [next-auth][warn][NO_SECRET] "\nhttps://next-auth.js.org/warnings#no_secret"
+[00:18:56.656] Server  ERROR   [next-auth][error][JWT_SESSION_ERROR] "\nhttps://next-auth.js.org/errors#jwt_session_error" "decryption operation failed" {}
+[00:18:57.442] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:33:17.674] Server  LOG        Reload env: .env
+[00:33:44.243] Server  LOG        Reload env: .env

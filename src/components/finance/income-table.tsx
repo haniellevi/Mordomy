@@ -31,11 +31,15 @@ import { Button } from "@/components/ui/button";
 import { Trash2, GripVertical } from "lucide-react";
 import { Income } from "@prisma/client";
 
-interface IncomeTableProps {
-    incomes: Income[];
+interface SerializedIncome extends Omit<Income, "amount"> {
+    amount: number;
 }
 
-function SortableRow({ income, onDelete }: { income: Income; onDelete: (id: string) => void }) {
+interface IncomeTableProps {
+    incomes: SerializedIncome[];
+}
+
+function SortableRow({ income, onDelete }: { income: SerializedIncome; onDelete: (id: string) => void }) {
     const {
         attributes,
         listeners,
@@ -124,7 +128,7 @@ export function IncomeTable({ incomes: initialIncomes }: IncomeTableProps) {
         }
     };
 
-    const updateOrder = async (newItems: Income[]) => {
+    const updateOrder = async (newItems: SerializedIncome[]) => {
         // In a real implementation, we would send the new order to the backend
         // For now, we assume the backend handles this or we implement a bulk update endpoint
         // Since we don't have a bulk update endpoint yet, we'll skip the API call for now

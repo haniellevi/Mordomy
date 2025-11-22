@@ -14,8 +14,12 @@ import { Button } from "@/components/ui/button";
 import { Trash2 } from "lucide-react";
 import { MiscExpense } from "@prisma/client";
 
+interface SerializedMiscExpense extends Omit<MiscExpense, "amount"> {
+    amount: number;
+}
+
 interface MiscExpenseTableProps {
-    miscExpenses: MiscExpense[];
+    miscExpenses: SerializedMiscExpense[];
 }
 
 export function MiscExpenseTable({ miscExpenses: initialMiscExpenses }: MiscExpenseTableProps) {

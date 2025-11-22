@@ -14,8 +14,12 @@ import { Button } from "@/components/ui/button";
 import { Trash2 } from "lucide-react";
 import { Investment } from "@prisma/client";
 
+interface SerializedInvestment extends Omit<Investment, "amount"> {
+    amount: number;
+}
+
 interface InvestmentTableProps {
-    investments: Investment[];
+    investments: SerializedInvestment[];
 }
 
 export function InvestmentTable({ investments: initialInvestments }: InvestmentTableProps) {

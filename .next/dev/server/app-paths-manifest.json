@@ -1,4 +1,4 @@
 {
-  "/(dashboard)/[year]/[month]/incomes/page": "app/(dashboard)/[year]/[month]/incomes/page.js",
-  "/(dashboard)/[year]/[month]/page": "app/(dashboard)/[year]/[month]/page.js"
+  "/landing/page": "app/landing/page.js",
+  "/page": "app/page.js"
 }

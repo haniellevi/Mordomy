@@ -51,8 +51,10 @@ export async function POST(req: Request) {
         );
     } catch (error) {
         if (error instanceof z.ZodError) {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            const zodError = error as any;
             return NextResponse.json(
-                { error: error.errors[0].message },
+                { error: zodError.errors[0].message },
                 { status: 400 }
             );
         }

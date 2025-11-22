@@ -32,11 +32,16 @@ import { Trash2, GripVertical } from "lucide-react";
 import { Expense } from "@prisma/client";
 import { cn } from "@/lib/utils";
 
-interface ExpenseTableProps {
-    expenses: Expense[];
+interface SerializedExpense extends Omit<Expense, "totalAmount" | "paidAmount"> {
+    totalAmount: number;
+    paidAmount: number;
 }
 
-function SortableRow({ expense, onDelete }: { expense: Expense; onDelete: (id: string) => void }) {
+interface ExpenseTableProps {
+    expenses: SerializedExpense[];
+}
+
+function SortableRow({ expense, onDelete }: { expense: SerializedExpense; onDelete: (id: string) => void }) {
     const {
         attributes,
         listeners,
