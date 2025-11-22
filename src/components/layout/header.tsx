@@ -1,6 +1,6 @@
 "use client";
 
-import { signOut } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import { User, Settings, LogOut, ChevronDown } from "lucide-react";
 import {
     DropdownMenu,
@@ -17,8 +17,12 @@ interface HeaderProps {
 }
 
 export function Header({ userName, userEmail }: HeaderProps) {
+    const router = useRouter();
+
     const handleLogout = async () => {
-        await signOut({ callbackUrl: "/login" });
+        await fetch("/api/auth/logout", { method: "POST" });
+        router.push("/login");
+        router.refresh();
     };
 
     // Generate user initials from name

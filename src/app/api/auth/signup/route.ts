@@ -1,51 +1,49 @@
 import { NextResponse } from "next/server";
-import { prisma } from "@/lib/prisma";
-import bcrypt from "bcryptjs";
+import { createServerClient } from "@/lib/supabase/server";
 import { z } from "zod";
 
 const signupSchema = z.object({
-    name: z.string().min(2, "O nome deve ter pelo menos 2 caracteres"),
     email: z.string().email("Email inválido"),
-    password: z
-        .string()
-        .min(8, "A senha deve ter pelo menos 8 caracteres")
-        .regex(/[A-Z]/, "A senha deve conter pelo menos uma letra maiúscula")
-        .regex(/[0-9]/, "A senha deve conter pelo menos um número"),
+    password: z.string().min(6, "A senha deve ter no mínimo 6 caracteres"),
+    name: z.string().min(1, "Nome é obrigatório"),
 });
 
 export async function POST(req: Request) {
     try {
         const body = await req.json();
-        const { name, email, password } = signupSchema.parse(body);
+        const { email, password, name } = signupSchema.parse(body);
 
-        const existingUser = await prisma.user.findUnique({
-            where: { email },
+        const supabase = await createServerClient();
+
+        // Create user with Supabase Auth
+        const { data, error } = await supabase.auth.signUp({
+            email,
+            password,
+            options: {
+                data: {
+                    name,
+                },
+            },
         });
 
-        if (existingUser) {
+        if (error) {
             return NextResponse.json(
-                { error: "Este email já está cadastrado" },
+                { error: error.message },
                 { status: 400 }
             );
         }
 
-        const hashedPassword = await bcrypt.hash(password, 10);
-
-        const user = await prisma.user.create({
-            data: {
-                name,
-                email,
-                password: hashedPassword,
-            },
-        });
-
-        // Remove password from response
-        const { password: _, ...userWithoutPassword } = user;
+        if (!data.user) {
+            return NextResponse.json(
+                { error: "Erro ao criar usuário" },
+                { status: 500 }
+            );
+        }
 
         return NextResponse.json(
             {
-                user: userWithoutPassword,
                 message: "Usuário criado com sucesso",
+                user: data.user,
             },
             { status: 201 }
         );
@@ -59,9 +57,9 @@ export async function POST(req: Request) {
             );
         }
 
-        console.error("Signup error:", error);
+        console.error("[SIGNUP_POST]", error);
         return NextResponse.json(
-            { error: "Erro ao criar usuário" },
+            { error: "Erro interno do servidor" },
             { status: 500 }
         );
     }

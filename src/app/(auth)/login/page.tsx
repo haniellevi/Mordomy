@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -18,16 +17,25 @@ export default function LoginPage() {
         e.preventDefault();
         setError("");
 
-        const res = await signIn("credentials", {
-            email,
-            password,
-            redirect: false,
-        });
+        try {
+            const res = await fetch("/api/auth/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, password }),
+            });
 
-        if (res?.error) {
-            setError("Email ou senha inválidos");
-        } else {
-            window.location.href = "/";
+            const data = await res.json();
+
+            if (!res.ok) {
+                setError(data.error || "Email ou senha inválidos");
+                return;
+            }
+
+            // Redirect to home page
+            router.push("/");
+            router.refresh();
+        } catch (error) {
+            setError("Erro ao fazer login");
         }
     };
 
