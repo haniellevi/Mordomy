@@ -34,7 +34,7 @@ export function AddExpenseDialog({ monthId }: AddExpenseDialogProps) {
     const [description, setDescription] = useState("");
     const [totalAmount, setTotalAmount] = useState("");
     const [paidAmount, setPaidAmount] = useState("");
-    const [date, setDate] = useState("");
+    const [dayOfMonth, setDayOfMonth] = useState("");
     const [type, setType] = useState("STANDARD");
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -51,7 +51,7 @@ export function AddExpenseDialog({ monthId }: AddExpenseDialogProps) {
                     description,
                     totalAmount,
                     paidAmount: paidAmount || "0",
-                    date: date || null,
+                    dayOfMonth: dayOfMonth || null,
                     type,
                 }),
             });
@@ -61,7 +61,7 @@ export function AddExpenseDialog({ monthId }: AddExpenseDialogProps) {
                 setDescription("");
                 setTotalAmount("");
                 setPaidAmount("");
-                setDate("");
+                setDayOfMonth("");
                 setType("STANDARD");
                 router.refresh();
             } else {
@@ -132,15 +132,18 @@ export function AddExpenseDialog({ monthId }: AddExpenseDialogProps) {
                             />
                         </div>
                         <div className="grid grid-cols-4 items-center gap-4">
-                            <Label htmlFor="date" className="text-right">
-                                Data
+                            <Label htmlFor="dayOfMonth" className="text-right">
+                                Dia
                             </Label>
                             <Input
-                                id="date"
-                                type="date"
-                                value={date}
-                                onChange={(e) => setDate(e.target.value)}
+                                id="dayOfMonth"
+                                type="number"
+                                min="1"
+                                max="31"
+                                value={dayOfMonth}
+                                onChange={(e) => setDayOfMonth(e.target.value)}
                                 className="col-span-3"
+                                placeholder="Opcional"
                             />
                         </div>
                         <div className="grid grid-cols-4 items-center gap-4">

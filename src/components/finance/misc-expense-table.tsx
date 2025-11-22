@@ -46,7 +46,7 @@ export function MiscExpenseTable({ miscExpenses: initialMiscExpenses }: MiscExpe
                     <TableHeader>
                         <TableRow>
                             <TableHead>Descrição</TableHead>
-                            <TableHead>Data</TableHead>
+                            <TableHead>Dia</TableHead>
                             <TableHead className="text-right">Valor</TableHead>
                             <TableHead className="w-[50px]"></TableHead>
                         </TableRow>
@@ -56,7 +56,7 @@ export function MiscExpenseTable({ miscExpenses: initialMiscExpenses }: MiscExpe
                             <TableRow key={misc.id}>
                                 <TableCell>{misc.description}</TableCell>
                                 <TableCell>
-                                    {misc.date ? new Date(misc.date).toLocaleDateString("pt-BR") : "-"}
+                                    {misc.dayOfMonth ? `Dia ${misc.dayOfMonth}` : "-"}
                                 </TableCell>
                                 <TableCell className="text-right font-medium">
                                     {new Intl.NumberFormat("pt-BR", {

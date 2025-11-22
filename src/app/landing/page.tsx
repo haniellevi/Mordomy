@@ -4,10 +4,10 @@ import { CTASection } from "@/components/landing/cta-section";
 import {
     TrendingUp,
     TrendingDown,
+    LayoutDashboard,
     PiggyBank,
-    ShoppingBag,
-    Calendar,
-    Church
+    CalendarDays,
+    ShoppingBag
 } from "lucide-react";
 
 export default function LandingPage() {
@@ -15,123 +15,64 @@ export default function LandingPage() {
         {
             icon: TrendingUp,
             title: "Controle de Entradas",
-            description: "Registre e acompanhe todas as suas fontes de renda de forma organizada.",
-            color: "text-accent-green",
+            description: "Registre todas as suas fontes de renda e visualize o crescimento do seu patrimônio.",
+            colorClass: "text-green-600 bg-green-100",
         },
         {
             icon: TrendingDown,
             title: "Gestão de Saídas",
-            description: "Monitore seus gastos fixos e variáveis com total controle de pagamentos.",
-            color: "text-accent-red",
+            description: "Acompanhe seus gastos mensais e identifique onde você pode economizar.",
+            colorClass: "text-red-500 bg-red-100",
+        },
+        {
+            icon: LayoutDashboard,
+            title: "Dashboard Intuitivo",
+            description: "Visualize sua saúde financeira com gráficos claros e resumos automáticos.",
+            colorClass: "text-blue-600 bg-blue-100",
         },
         {
             icon: PiggyBank,
             title: "Investimentos",
-            description: "Acompanhe seus investimentos e veja seu patrimônio crescer.",
-            color: "text-primary",
+            description: "Gerencie seus investimentos e acompanhe a evolução da sua carteira.",
+            colorClass: "text-purple-600 bg-purple-100",
+        },
+        {
+            icon: CalendarDays,
+            title: "Planejamento Mensal",
+            description: "Planeje o próximo mês com facilidade duplicando seus gastos recorrentes.",
+            colorClass: "text-orange-600 bg-orange-100",
         },
         {
             icon: ShoppingBag,
             title: "Gastos Avulsos",
-            description: "Registre despesas extras e mantenha tudo sob controle.",
-            color: "text-orange-500",
-        },
-        {
-            icon: Calendar,
-            title: "Planejamento Mensal",
-            description: "Duplique meses anteriores e planeje o futuro com facilidade.",
-            color: "text-blue-500",
-        },
-        {
-            icon: Church,
-            title: "Dízimo Automático",
-            description: "Cálculo automático de 10% do total de entradas para dízimo.",
-            color: "text-purple-500",
+            description: "Controle despesas variáveis e não perca nada de vista.",
+            colorClass: "text-pink-600 bg-pink-100",
         },
     ];
 
     return (
-        <div className="min-h-screen bg-background">
-            {/* Hero Section */}
+        <div className="flex flex-col min-h-screen">
             <HeroSection />
 
-            {/* Features Section */}
             <section className="py-20 bg-muted/50">
-                <div className="container mx-auto px-4">
-                    <div className="mx-auto max-w-3xl text-center mb-16">
-                        <h2 className="mb-4 text-3xl font-bold md:text-4xl lg:text-5xl">
-                            Tudo que Você Precisa
+                <div className="container px-4 md:px-6">
+                    <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+                        <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+                            Tudo que você precisa
                         </h2>
-                        <p className="text-lg text-muted-foreground md:text-xl">
-                            Funcionalidades poderosas para controlar suas finanças pessoais
+                        <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
+                            Funcionalidades pensadas para simplificar sua vida financeira e te dar controle total.
                         </p>
                     </div>
-
-                    <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                        {features.map((feature) => (
-                            <FeatureCard key={feature.title} {...feature} />
+                    <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                        {features.map((feature, index) => (
+                            <FeatureCard key={index} {...feature} />
                         ))}
                     </div>
                 </div>
             </section>
 
-            {/* How It Works Section */}
-            <section className="py-20">
-                <div className="container mx-auto px-4">
-                    <div className="mx-auto max-w-3xl text-center mb-16">
-                        <h2 className="mb-4 text-3xl font-bold md:text-4xl lg:text-5xl">
-                            Como Funciona
-                        </h2>
-                        <p className="text-lg text-muted-foreground md:text-xl">
-                            Comece a usar em 3 passos simples
-                        </p>
-                    </div>
-
-                    <div className="mx-auto max-w-4xl">
-                        <div className="grid gap-8 md:grid-cols-3">
-                            <div className="text-center">
-                                <div className="mb-4 inline-flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-2xl font-bold text-primary">
-                                    1
-                                </div>
-                                <h3 className="mb-2 text-xl font-semibold">Cadastre-se</h3>
-                                <p className="text-muted-foreground">
-                                    Crie sua conta gratuitamente em menos de 1 minuto
-                                </p>
-                            </div>
-                            <div className="text-center">
-                                <div className="mb-4 inline-flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-2xl font-bold text-primary">
-                                    2
-                                </div>
-                                <h3 className="mb-2 text-xl font-semibold">Configure</h3>
-                                <p className="text-muted-foreground">
-                                    Adicione suas entradas, saídas e investimentos do mês
-                                </p>
-                            </div>
-                            <div className="text-center">
-                                <div className="mb-4 inline-flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-2xl font-bold text-primary">
-                                    3
-                                </div>
-                                <h3 className="mb-2 text-xl font-semibold">Acompanhe</h3>
-                                <p className="text-muted-foreground">
-                                    Visualize seu saldo e tome decisões financeiras inteligentes
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* CTA Section */}
             <CTASection />
-
-            {/* Footer */}
-            <footer className="border-t py-8">
-                <div className="container mx-auto px-4">
-                    <div className="text-center text-sm text-muted-foreground">
-                        <p>© 2025 Mordomy. Todos os direitos reservados.</p>
-                    </div>
-                </div>
-            </footer>
         </div>
     );
 }

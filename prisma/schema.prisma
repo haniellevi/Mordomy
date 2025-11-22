@@ -41,7 +41,7 @@ model Income {
   month       Month    @relation(fields: [monthId], references: [id], onDelete: Cascade)
   description String
   amount      Decimal  @db.Decimal(10, 2)
-  date        DateTime
+  dayOfMonth  Int?     // Dia do mês (1-31)
   order       Int      @default(0)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
@@ -61,7 +61,7 @@ model Expense {
   description     String
   totalAmount     Decimal     @db.Decimal(10, 2)
   paidAmount      Decimal     @db.Decimal(10, 2) @default(0)
-  date            DateTime?
+  dayOfMonth      Int?        // Dia do mês (1-31)
   order           Int         @default(0)
   type            ExpenseType @default(STANDARD)
   createdAt       DateTime    @default(now())
@@ -74,7 +74,7 @@ model Investment {
   month       Month    @relation(fields: [monthId], references: [id], onDelete: Cascade)
   description String
   amount      Decimal  @db.Decimal(10, 2)
-  date        DateTime?
+  dayOfMonth  Int?     // Dia do mês (1-31)
   order       Int      @default(0)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
@@ -86,7 +86,7 @@ model MiscExpense {
   month       Month    @relation(fields: [monthId], references: [id], onDelete: Cascade)
   description String
   amount      Decimal  @db.Decimal(10, 2)
-  date        DateTime?
+  dayOfMonth  Int?     // Dia do mês (1-31)
   order       Int      @default(0)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt

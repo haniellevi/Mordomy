@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { getCurrentUser } from "@/lib/session";
 import { updateTithe } from "@/lib/finance-service";
+import { validateMonthEditable } from "@/lib/validation-helpers";
 
 export async function POST(req: Request) {
     const user = await getCurrentUser();
@@ -11,13 +12,18 @@ export async function POST(req: Request) {
     }
 
     try {
-        const { monthId, description, amount, date } = await req.json();
+        const { monthId, description, amount, dayOfMonth } = await req.json();
 
-        if (!monthId || !description || !amount || !date) {
+        if (!monthId || !description || !amount) {
             return new NextResponse("Missing required fields", { status: 400 });
         }
 
-        // Get the current max order to append to the end
+        // Validate month is editable
+        const validationError = await validateMonthEditable(monthId, user.id);
+        if (validationError) {
+            return new NextResponse(validationError.error, { status: validationError.status });
+        }
+
         const lastItem = await prisma.income.findFirst({
             where: { monthId },
             orderBy: { order: "desc" },
@@ -30,12 +36,11 @@ export async function POST(req: Request) {
                 monthId,
                 description,
                 amount: parseFloat(amount),
-                date: new Date(date),
+                dayOfMonth: dayOfMonth ? parseInt(dayOfMonth) : undefined,
                 order: newOrder,
             },
         });
 
-        // Update Tithe
         await updateTithe(monthId);
 
         return NextResponse.json(income);

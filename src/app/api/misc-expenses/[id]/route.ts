@@ -2,10 +2,11 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { getCurrentUser } from "@/lib/session";
 import { updateMiscTotal } from "@/lib/finance-service";
+import { validateMonthEditable } from "@/lib/validation-helpers";
 
 export async function DELETE(
     req: Request,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     const user = await getCurrentUser();
 
@@ -14,8 +15,26 @@ export async function DELETE(
     }
 
     try {
+        const { id } = await params;
+
+        // Get misc expense to find monthId
+        const miscExpense = await prisma.miscExpense.findUnique({
+            where: { id },
+            select: { monthId: true },
+        });
+
+        if (!miscExpense) {
+            return new NextResponse("Misc expense not found", { status: 404 });
+        }
+
+        // Validate month is editable
+        const validationError = await validateMonthEditable(miscExpense.monthId, user.id);
+        if (validationError) {
+            return new NextResponse(validationError.error, { status: validationError.status });
+        }
+
         const deletedMisc = await prisma.miscExpense.delete({
-            where: { id: params.id },
+            where: { id },
         });
 
         await updateMiscTotal(deletedMisc.monthId);
@@ -28,7 +47,7 @@ export async function DELETE(
 
 export async function PATCH(
     req: Request,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     const user = await getCurrentUser();
 
@@ -37,15 +56,32 @@ export async function PATCH(
     }
 
     try {
+        const { id } = await params;
         const body = await req.json();
-        const { description, amount, date } = body;
+        const { description, amount, dayOfMonth } = body;
+
+        // Get misc expense to find monthId
+        const existingMiscExpense = await prisma.miscExpense.findUnique({
+            where: { id },
+            select: { monthId: true },
+        });
+
+        if (!existingMiscExpense) {
+            return new NextResponse("Misc expense not found", { status: 404 });
+        }
+
+        // Validate month is editable
+        const validationError = await validateMonthEditable(existingMiscExpense.monthId, user.id);
+        if (validationError) {
+            return new NextResponse(validationError.error, { status: validationError.status });
+        }
 
         const miscExpense = await prisma.miscExpense.update({
-            where: { id: params.id },
+            where: { id },
             data: {
                 description,
                 amount: amount ? parseFloat(amount) : undefined,
-                date: date ? new Date(date) : undefined,
+                dayOfMonth: dayOfMonth ? parseInt(dayOfMonth) : undefined,
             },
         });
 

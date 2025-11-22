@@ -26,11 +26,11 @@ export function AddIncomeDialog({ monthId }: AddIncomeDialogProps) {
     const [loading, setLoading] = useState(false);
     const [description, setDescription] = useState("");
     const [amount, setAmount] = useState("");
-    const [date, setDate] = useState("");
+    const [dayOfMonth, setDayOfMonth] = useState("");
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (!description || !amount || !date) return;
+        if (!description || !amount) return;
 
         setLoading(true);
         try {
@@ -41,7 +41,7 @@ export function AddIncomeDialog({ monthId }: AddIncomeDialogProps) {
                     monthId,
                     description,
                     amount,
-                    date,
+                    dayOfMonth,
                 }),
             });
 
@@ -49,7 +49,7 @@ export function AddIncomeDialog({ monthId }: AddIncomeDialogProps) {
                 setOpen(false);
                 setDescription("");
                 setAmount("");
-                setDate("");
+                setDayOfMonth("");
                 router.refresh();
             } else {
                 alert("Erro ao adicionar entrada.");
@@ -105,16 +105,18 @@ export function AddIncomeDialog({ monthId }: AddIncomeDialogProps) {
                             />
                         </div>
                         <div className="grid grid-cols-4 items-center gap-4">
-                            <Label htmlFor="date" className="text-right">
-                                Data
+                            <Label htmlFor="dayOfMonth" className="text-right">
+                                Dia
                             </Label>
                             <Input
-                                id="date"
-                                type="date"
-                                value={date}
-                                onChange={(e) => setDate(e.target.value)}
+                                id="dayOfMonth"
+                                type="number"
+                                min="1"
+                                max="31"
+                                value={dayOfMonth}
+                                onChange={(e) => setDayOfMonth(e.target.value)}
                                 className="col-span-3"
-                                required
+                                placeholder="Opcional"
                             />
                         </div>
                     </div>

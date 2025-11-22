@@ -22,6 +22,24 @@ export function canDeleteMonth(year: number, month: number): boolean {
 }
 
 /**
+ * Check if a month can be edited (current month or future)
+ */
+export function isMonthEditable(year: number, month: number): boolean {
+    const today = new Date();
+    const currentYear = today.getFullYear();
+    const currentMonth = today.getMonth() + 1;
+
+    // Future year = editable
+    if (year > currentYear) return true;
+
+    // Same year, current month or future = editable
+    if (year === currentYear && month >= currentMonth) return true;
+
+    // Past month = not editable
+    return false;
+}
+
+/**
  * Format month name in Portuguese
  */
 export function formatMonthName(year: number, month: number): string {

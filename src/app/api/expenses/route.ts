@@ -1,19 +1,17 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { getCurrentUser } from "@/lib/session";
+import { validateMonthEditable } from "@/lib/validation-helpers";
 
 export async function POST(req: Request) {
-    const user = await getCurrentUser();
-
-    if (!user) {
-        return new NextResponse("Unauthorized", { status: 401 });
-    }
-
     try {
-        const { monthId, description, totalAmount, paidAmount, date, type } = await req.json();
+        const user = await getCurrentUser();
+        const body = await req.json();
+        const { monthId, description, totalAmount, paidAmount, dayOfMonth, type } = body;
 
-        if (!monthId || !description || !totalAmount) {
-            return new NextResponse("Missing required fields", { status: 400 });
+        const validationError = await validateMonthEditable(monthId, user.id);
+        if (validationError) {
+            return new NextResponse(validationError.error, { status: validationError.status });
         }
 
         const lastItem = await prisma.expense.findFirst({
@@ -29,7 +27,7 @@ export async function POST(req: Request) {
                 description,
                 totalAmount: parseFloat(totalAmount),
                 paidAmount: paidAmount ? parseFloat(paidAmount) : 0,
-                date: date ? new Date(date) : null,
+                dayOfMonth: dayOfMonth ? parseInt(dayOfMonth) : null,
                 order: newOrder,
                 type: type || "STANDARD",
             },

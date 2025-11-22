@@ -2,10 +2,11 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { getCurrentUser } from "@/lib/session";
 import { updateInvestmentTotal } from "@/lib/finance-service";
+import { validateMonthEditable } from "@/lib/validation-helpers";
 
 export async function DELETE(
     req: Request,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     const user = await getCurrentUser();
 
@@ -14,8 +15,26 @@ export async function DELETE(
     }
 
     try {
+        const { id } = await params;
+
+        // Get investment to find monthId
+        const investment = await prisma.investment.findUnique({
+            where: { id },
+            select: { monthId: true },
+        });
+
+        if (!investment) {
+            return new NextResponse("Investment not found", { status: 404 });
+        }
+
+        // Validate month is editable
+        const validationError = await validateMonthEditable(investment.monthId, user.id);
+        if (validationError) {
+            return new NextResponse(validationError.error, { status: validationError.status });
+        }
+
         const deletedInvestment = await prisma.investment.delete({
-            where: { id: params.id },
+            where: { id },
         });
 
         await updateInvestmentTotal(deletedInvestment.monthId);
@@ -28,7 +47,7 @@ export async function DELETE(
 
 export async function PATCH(
     req: Request,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     const user = await getCurrentUser();
 
@@ -37,15 +56,32 @@ export async function PATCH(
     }
 
     try {
+        const { id } = await params;
         const body = await req.json();
-        const { description, amount, date } = body;
+        const { description, amount, dayOfMonth } = body;
+
+        // Get investment to find monthId
+        const existingInvestment = await prisma.investment.findUnique({
+            where: { id },
+            select: { monthId: true },
+        });
+
+        if (!existingInvestment) {
+            return new NextResponse("Investment not found", { status: 404 });
+        }
+
+        // Validate month is editable
+        const validationError = await validateMonthEditable(existingInvestment.monthId, user.id);
+        if (validationError) {
+            return new NextResponse(validationError.error, { status: validationError.status });
+        }
 
         const investment = await prisma.investment.update({
-            where: { id: params.id },
+            where: { id },
             data: {
                 description,
                 amount: amount ? parseFloat(amount) : undefined,
-                date: date ? new Date(date) : undefined,
+                dayOfMonth: dayOfMonth ? parseInt(dayOfMonth) : undefined,
             },
         });
 

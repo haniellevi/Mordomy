@@ -45,6 +45,13 @@ export default async function ExpensesPage({ params }: ExpensesPageProps) {
     const totalPaid = monthData.expenses.reduce((sum, expense) => sum + Number(expense.paidAmount), 0);
     const balance = totalIncome - totalPaid;
 
+    // Converter Decimal para number para Client Components
+    const expensesData = monthData.expenses.map(exp => ({
+        ...exp,
+        totalAmount: Number(exp.totalAmount),
+        paidAmount: Number(exp.paidAmount),
+    }));
+
     return (
         <>
             <div className="container mx-auto p-4 space-y-6">
@@ -81,7 +88,7 @@ export default async function ExpensesPage({ params }: ExpensesPageProps) {
                     </Card>
                 </div>
 
-                <ExpenseTable expenses={monthData.expenses} />
+                <ExpenseTable expenses={expensesData} />
             </div>
 
             <BottomNav year={yearStr} month={monthStr} />

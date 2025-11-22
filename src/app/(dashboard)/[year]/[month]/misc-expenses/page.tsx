@@ -45,6 +45,12 @@ export default async function MiscExpensesPage({ params }: MiscExpensesPageProps
         0
     );
 
+    // Converter Decimal para number para Client Components
+    const miscExpensesData = monthData.miscExpenses.map(exp => ({
+        ...exp,
+        amount: Number(exp.amount),
+    }));
+
     return (
         <>
             <div className="container mx-auto p-4 space-y-6">
@@ -66,7 +72,7 @@ export default async function MiscExpensesPage({ params }: MiscExpensesPageProps
                     </CardContent>
                 </Card>
 
-                <MiscExpenseTable miscExpenses={monthData.miscExpenses} />
+                <MiscExpenseTable miscExpenses={miscExpensesData} />
             </div>
 
             <BottomNav year={yearStr} month={monthStr} />

@@ -45,6 +45,12 @@ export default async function InvestmentsPage({ params }: InvestmentsPageProps) 
         0
     );
 
+    // Converter Decimal para number para Client Components
+    const investmentsData = monthData.investments.map(inv => ({
+        ...inv,
+        amount: Number(inv.amount),
+    }));
+
     return (
         <>
             <div className="container mx-auto p-4 space-y-6">
@@ -66,7 +72,7 @@ export default async function InvestmentsPage({ params }: InvestmentsPageProps) 
                     </CardContent>
                 </Card>
 
-                <InvestmentTable investments={monthData.investments} />
+                <InvestmentTable investments={investmentsData} />
             </div>
 
             <BottomNav year={yearStr} month={monthStr} />

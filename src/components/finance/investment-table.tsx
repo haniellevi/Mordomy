@@ -46,7 +46,7 @@ export function InvestmentTable({ investments: initialInvestments }: InvestmentT
                     <TableHeader>
                         <TableRow>
                             <TableHead>Descrição</TableHead>
-                            <TableHead>Data</TableHead>
+                            <TableHead>Dia</TableHead>
                             <TableHead className="text-right">Valor</TableHead>
                             <TableHead className="w-[50px]"></TableHead>
                         </TableRow>
@@ -56,7 +56,7 @@ export function InvestmentTable({ investments: initialInvestments }: InvestmentT
                             <TableRow key={investment.id}>
                                 <TableCell>{investment.description}</TableCell>
                                 <TableCell>
-                                    {investment.date ? new Date(investment.date).toLocaleDateString("pt-BR") : "-"}
+                                    {investment.dayOfMonth ? `Dia ${investment.dayOfMonth}` : "-"}
                                 </TableCell>
                                 <TableCell className="text-right font-medium">
                                     {new Intl.NumberFormat("pt-BR", {

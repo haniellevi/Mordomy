@@ -32,7 +32,7 @@ export function AddMiscExpenseDialog({ monthId }: AddMiscExpenseDialogProps) {
             monthId,
             description: formData.get("description"),
             amount: formData.get("amount"),
-            date: formData.get("date"),
+            dayOfMonth: formData.get("dayOfMonth"),
         };
 
         try {
@@ -86,8 +86,15 @@ export function AddMiscExpenseDialog({ monthId }: AddMiscExpenseDialogProps) {
                         />
                     </div>
                     <div className="space-y-2">
-                        <Label htmlFor="date">Data</Label>
-                        <Input id="date" name="date" type="date" required />
+                        <Label htmlFor="dayOfMonth">Dia</Label>
+                        <Input
+                            id="dayOfMonth"
+                            name="dayOfMonth"
+                            type="number"
+                            min="1"
+                            max="31"
+                            placeholder="Opcional"
+                        />
                     </div>
                     <div className="flex justify-end">
                         <Button type="submit" disabled={loading}>

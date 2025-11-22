@@ -76,7 +76,7 @@ function SortableRow({ expense, onDelete }: { expense: Expense; onDelete: (id: s
                 </div>
             </TableCell>
             <TableCell>
-                {expense.date ? new Date(expense.date).toLocaleDateString("pt-BR") : "-"}
+                {expense.dayOfMonth ? `Dia ${expense.dayOfMonth}` : "-"}
             </TableCell>
             <TableCell className="text-right">
                 {new Intl.NumberFormat("pt-BR", {
@@ -171,7 +171,7 @@ export function ExpenseTable({ expenses: initialExpenses }: ExpenseTableProps) {
                             <TableRow>
                                 <TableHead className="w-[50px]"></TableHead>
                                 <TableHead>Descrição</TableHead>
-                                <TableHead>Data</TableHead>
+                                <TableHead>Dia</TableHead>
                                 <TableHead className="text-right">Total</TableHead>
                                 <TableHead className="text-right">Pago</TableHead>
                                 <TableHead className="text-right">Falta</TableHead>

@@ -278,6 +278,12 @@ async function ExpensesPage({ params }) {
     const totalIncome = monthData.incomes.reduce((sum, income)=>sum + Number(income.amount), 0);
     const totalPaid = monthData.expenses.reduce((sum, expense)=>sum + Number(expense.paidAmount), 0);
     const balance = totalIncome - totalPaid;
+    // Converter Decimal para number para Client Components
+    const expensesData = monthData.expenses.map((exp)=>({
+            ...exp,
+            totalAmount: Number(exp.totalAmount),
+            paidAmount: Number(exp.paidAmount)
+        }));
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Fragment"], {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -291,20 +297,20 @@ async function ExpensesPage({ params }) {
                                 children: "Saídas"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(dashboard)/[year]/[month]/expenses/page.tsx",
-                                lineNumber: 52,
+                                lineNumber: 59,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$finance$2f$add$2d$expense$2d$dialog$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["AddExpenseDialog"], {
                                 monthId: monthData.id
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(dashboard)/[year]/[month]/expenses/page.tsx",
-                                lineNumber: 53,
+                                lineNumber: 60,
                                 columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/(dashboard)/[year]/[month]/expenses/page.tsx",
-                        lineNumber: 51,
+                        lineNumber: 58,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -319,12 +325,12 @@ async function ExpensesPage({ params }) {
                                             children: "Total Pago"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(dashboard)/[year]/[month]/expenses/page.tsx",
-                                            lineNumber: 59,
+                                            lineNumber: 66,
                                             columnNumber: 29
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(dashboard)/[year]/[month]/expenses/page.tsx",
-                                        lineNumber: 58,
+                                        lineNumber: 65,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -333,18 +339,18 @@ async function ExpensesPage({ params }) {
                                             children: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$utils$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["formatCurrency"])(totalPaid)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(dashboard)/[year]/[month]/expenses/page.tsx",
-                                            lineNumber: 64,
+                                            lineNumber: 71,
                                             columnNumber: 29
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(dashboard)/[year]/[month]/expenses/page.tsx",
-                                        lineNumber: 63,
+                                        lineNumber: 70,
                                         columnNumber: 25
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/(dashboard)/[year]/[month]/expenses/page.tsx",
-                                lineNumber: 57,
+                                lineNumber: 64,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Card"], {
@@ -356,12 +362,12 @@ async function ExpensesPage({ params }) {
                                             children: "Saldo Restante"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(dashboard)/[year]/[month]/expenses/page.tsx",
-                                            lineNumber: 72,
+                                            lineNumber: 79,
                                             columnNumber: 29
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(dashboard)/[year]/[month]/expenses/page.tsx",
-                                        lineNumber: 71,
+                                        lineNumber: 78,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -370,37 +376,37 @@ async function ExpensesPage({ params }) {
                                             children: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$utils$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["formatCurrency"])(balance)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(dashboard)/[year]/[month]/expenses/page.tsx",
-                                            lineNumber: 77,
+                                            lineNumber: 84,
                                             columnNumber: 29
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(dashboard)/[year]/[month]/expenses/page.tsx",
-                                        lineNumber: 76,
+                                        lineNumber: 83,
                                         columnNumber: 25
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/(dashboard)/[year]/[month]/expenses/page.tsx",
-                                lineNumber: 70,
+                                lineNumber: 77,
                                 columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/(dashboard)/[year]/[month]/expenses/page.tsx",
-                        lineNumber: 56,
+                        lineNumber: 63,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$finance$2f$expense$2d$table$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["ExpenseTable"], {
-                        expenses: monthData.expenses
+                        expenses: expensesData
                     }, void 0, false, {
                         fileName: "[project]/src/app/(dashboard)/[year]/[month]/expenses/page.tsx",
-                        lineNumber: 84,
+                        lineNumber: 91,
                         columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/(dashboard)/[year]/[month]/expenses/page.tsx",
-                lineNumber: 50,
+                lineNumber: 57,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$layout$2f$bottom$2d$nav$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["BottomNav"], {
@@ -408,7 +414,7 @@ async function ExpensesPage({ params }) {
                 month: monthStr
             }, void 0, false, {
                 fileName: "[project]/src/app/(dashboard)/[year]/[month]/expenses/page.tsx",
-                lineNumber: 87,
+                lineNumber: 94,
                 columnNumber: 13
             }, this)
         ]

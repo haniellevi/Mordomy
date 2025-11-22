@@ -251,7 +251,7 @@ function InvestmentTable({ investments: initialInvestments }) {
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TableHead"], {
-                                        children: "Data"
+                                        children: "Dia"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/finance/investment-table.tsx",
                                         lineNumber: 49,
@@ -295,7 +295,7 @@ function InvestmentTable({ investments: initialInvestments }) {
                                                 columnNumber: 33
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TableCell"], {
-                                                children: investment.date ? new Date(investment.date).toLocaleDateString("pt-BR") : "-"
+                                                children: investment.dayOfMonth ? `Dia ${investment.dayOfMonth}` : "-"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/finance/investment-table.tsx",
                                                 lineNumber: 58,
@@ -643,7 +643,7 @@ function AddInvestmentDialog({ monthId }) {
             monthId,
             description: formData.get("description"),
             amount: formData.get("amount"),
-            date: formData.get("date")
+            dayOfMonth: formData.get("dayOfMonth")
         };
         try {
             const res = await fetch("/api/investments", {
@@ -768,18 +768,20 @@ function AddInvestmentDialog({ monthId }) {
                                 className: "space-y-2",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Label"], {
-                                        htmlFor: "date",
-                                        children: "Data"
+                                        htmlFor: "dayOfMonth",
+                                        children: "Dia"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/finance/add-investment-dialog.tsx",
                                         lineNumber: 89,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
-                                        id: "date",
-                                        name: "date",
-                                        type: "date",
-                                        required: true
+                                        id: "dayOfMonth",
+                                        name: "dayOfMonth",
+                                        type: "number",
+                                        min: "1",
+                                        max: "31",
+                                        placeholder: "Opcional"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/finance/add-investment-dialog.tsx",
                                         lineNumber: 90,
@@ -799,12 +801,12 @@ function AddInvestmentDialog({ monthId }) {
                                     children: loading ? "Salvando..." : "Salvar"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/finance/add-investment-dialog.tsx",
-                                    lineNumber: 93,
+                                    lineNumber: 100,
                                     columnNumber: 25
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/finance/add-investment-dialog.tsx",
-                                lineNumber: 92,
+                                lineNumber: 99,
                                 columnNumber: 21
                             }, this)
                         ]

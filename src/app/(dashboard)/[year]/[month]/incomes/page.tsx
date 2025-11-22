@@ -42,6 +42,12 @@ export default async function IncomesPage({ params }: IncomesPageProps) {
 
     const totalIncome = monthData.incomes.reduce((sum, income) => sum + Number(income.amount), 0);
 
+    // Converter Decimal para number para Client Components
+    const incomesData = monthData.incomes.map(inc => ({
+        ...inc,
+        amount: Number(inc.amount),
+    }));
+
     return (
         <>
             <div className="container mx-auto p-4 space-y-6">
@@ -63,7 +69,7 @@ export default async function IncomesPage({ params }: IncomesPageProps) {
                     </CardContent>
                 </Card>
 
-                <IncomeTable incomes={monthData.incomes} />
+                <IncomeTable incomes={incomesData} />
             </div>
 
             <BottomNav year={yearStr} month={monthStr} />

@@ -16,6 +16,7 @@ export function PlanNextMonthAlert({ latestMonth }: PlanNextMonthAlertProps) {
     const [show, setShow] = useState(false);
     const [loading, setLoading] = useState(false);
     const [daysLeft, setDaysLeft] = useState(0);
+    const [nextMonthName, setNextMonthName] = useState("");
 
     useEffect(() => {
         const checkDate = () => {
@@ -26,13 +27,29 @@ export function PlanNextMonthAlert({ latestMonth }: PlanNextMonthAlertProps) {
 
             setDaysLeft(remaining);
 
+            // Calculate next month name
+            if (latestMonth) {
+                let nextMonth = latestMonth.month + 1;
+                let nextYear = latestMonth.year;
+                if (nextMonth > 12) {
+                    nextMonth = 1;
+                    nextYear += 1;
+                }
+                const nextDate = new Date(nextYear, nextMonth - 1, 1);
+                const monthName = nextDate.toLocaleString('pt-BR', {
+                    month: 'long',
+                    year: 'numeric'
+                });
+                setNextMonthName(monthName.charAt(0).toUpperCase() + monthName.slice(1));
+            }
+
             // Show if it's after the 20th (design implies end of month urgency)
             if (day >= 20) {
                 setShow(true);
             }
         };
         checkDate();
-    }, []);
+    }, [latestMonth]);
 
     const handleDuplicate = async () => {
         if (!latestMonth) return;
@@ -80,7 +97,7 @@ export function PlanNextMonthAlert({ latestMonth }: PlanNextMonthAlertProps) {
                     Faltam {daysLeft} dias para o fim do mês!
                 </p>
                 <p className="text-green-600 text-base font-normal leading-normal">
-                    Como deseja iniciar o planejamento do próximo mês?
+                    Como deseja iniciar o planejamento de {nextMonthName}?
                 </p>
             </div>
             <div className="flex w-full flex-col gap-2 @[480px]:w-auto @[480px]:flex-row">

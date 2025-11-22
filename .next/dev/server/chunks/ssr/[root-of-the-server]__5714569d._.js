@@ -239,6 +239,8 @@ __turbopack_context__.n(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$c
     ()=>findPreviousMonth,
     "formatMonthName",
     ()=>formatMonthName,
+    "isMonthEditable",
+    ()=>isMonthEditable,
     "sortMonths",
     ()=>sortMonths
 ]);
@@ -248,6 +250,17 @@ function canDeleteMonth(year, month) {
     const monthStart = new Date(year, month - 1, 1);
     monthStart.setHours(0, 0, 0, 0);
     return today < monthStart;
+}
+function isMonthEditable(year, month) {
+    const today = new Date();
+    const currentYear = today.getFullYear();
+    const currentMonth = today.getMonth() + 1;
+    // Future year = editable
+    if (year > currentYear) return true;
+    // Same year, current month or future = editable
+    if (year === currentYear && month >= currentMonth) return true;
+    // Past month = not editable
+    return false;
 }
 function formatMonthName(year, month) {
     const date = new Date(year, month - 1, 1);
