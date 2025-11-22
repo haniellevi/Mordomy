@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Minhas Saídas</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#7C3AED",
+            "background-light": "#F7F2FF",
+            "background-dark": "#12101E",
+          },
+          fontFamily: {
+            "display": ["Manrope", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24;
+    }
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex min-h-screen w-full flex-col">
+<header class="p-4">
+<div class="flex items-center justify-between">
+<button aria-label="Voltar" class="text-slate-800 dark:text-white flex size-12 shrink-0 items-center justify-center -ml-3">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</button>
+</div>
+</header>
+<main class="flex-1 px-4 pb-4">
+<section class="mt-2">
+<h1 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] mb-4">Minhas Saídas</h1>
+<div class="flex flex-col gap-2 rounded-xl bg-red-600 dark:bg-red-500 p-5 shadow-lg">
+<p class="text-white text-sm font-semibold leading-normal">Total das Saídas</p>
+<p class="text-white tracking-light text-2xl font-bold leading-tight">R$ 1.950,00</p>
+</div>
+</section>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] pt-8 pb-1">Contas a Pagar</h2>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal pb-3">Arraste para priorizar suas contas</p>
+<div class="flex flex-col gap-3">
+<div class="flex items-center gap-4 bg-white dark:bg-[#1C1A2E] p-3 rounded-xl shadow-sm">
+<div class="flex items-center justify-center rounded-lg bg-amber-100 dark:bg-amber-500/20 shrink-0 size-12 text-amber-600 dark:text-amber-400">
+<span class="material-symbols-outlined">drag_indicator</span>
+</div>
+<div class="flex flex-1 flex-col justify-center gap-0.5">
+<div class="flex items-center gap-2">
+<p class="text-slate-900 dark:text-white text-base font-semibold leading-normal">Dízimo</p>
+<span class="text-[10px] font-bold text-amber-600 dark:text-amber-400 bg-amber-100 dark:bg-amber-500/20 px-2 py-0.5 rounded-full">PRIORIDADE</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal">Total: R$ 500,00</p>
+</div>
+<div class="shrink-0 flex items-center gap-2">
+<p class="text-primary dark:text-violet-400 text-sm font-bold leading-normal">100%</p>
+<div class="w-16 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-700">
+<div class="h-2 rounded-full bg-primary dark:bg-violet-400" style="width: 100%;"></div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-white dark:bg-[#1C1A2E] p-3 rounded-xl shadow-sm">
+<div class="flex items-center justify-center rounded-lg bg-amber-100 dark:bg-amber-500/20 shrink-0 size-12 text-amber-600 dark:text-amber-400">
+<span class="material-symbols-outlined">drag_indicator</span>
+</div>
+<div class="flex flex-1 flex-col justify-center gap-0.5">
+<p class="text-slate-900 dark:text-white text-base font-semibold leading-normal">Investimento</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal">Total: R$ 1.200,00</p>
+</div>
+<div class="shrink-0 flex items-center gap-2">
+<p class="text-primary dark:text-violet-400 text-sm font-bold leading-normal">100%</p>
+<div class="w-16 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-700">
+<div class="h-2 rounded-full bg-primary dark:bg-violet-400" style="width: 100%;"></div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-white dark:bg-[#1C1A2E] p-3 rounded-xl shadow-sm">
+<div class="flex items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 shrink-0 size-12 text-slate-500 dark:text-slate-400">
+<span class="material-symbols-outlined">drag_indicator</span>
+</div>
+<div class="flex flex-1 flex-col justify-center gap-0.5">
+<p class="text-slate-900 dark:text-white text-base font-semibold leading-normal">Aluguel</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal">Vence: 10/12/2023</p>
+<p class="text-red-600 dark:text-red-500 text-sm font-normal leading-normal">Falta Pagar: R$ 1.500,00</p>
+</div>
+<div class="shrink-0 flex items-center gap-2">
+<p class="text-slate-800 dark:text-slate-200 text-sm font-bold leading-normal">0%</p>
+<div class="w-16 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-700">
+<div class="h-2 rounded-full bg-primary dark:bg-violet-400" style="width: 0%;"></div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-white dark:bg-[#1C1A2E] p-3 rounded-xl shadow-sm">
+<div class="flex items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 shrink-0 size-12 text-slate-500 dark:text-slate-400">
+<span class="material-symbols-outlined">drag_indicator</span>
+</div>
+<div class="flex flex-1 flex-col justify-center gap-0.5">
+<p class="text-slate-900 dark:text-white text-base font-semibold leading-normal">Cartão de Crédito</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal">Pagamento Parcial: R$ 250,00</p>
+<p class="text-orange-500 dark:text-orange-400 text-sm font-normal leading-normal">Falta Pagar: R$ 550,00</p>
+</div>
+<div class="shrink-0 flex items-center gap-2">
+<p class="text-slate-800 dark:text-slate-200 text-sm font-bold leading-normal">31%</p>
+<div class="w-16 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-700">
+<div class="h-2 rounded-full bg-primary dark:bg-violet-400" style="width: 31.25%;"></div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-white dark:bg-[#1C1A2E] p-3 rounded-xl shadow-sm">
+<div class="flex items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 shrink-0 size-12 text-slate-500 dark:text-slate-400">
+<span class="material-symbols-outlined">drag_indicator</span>
+</div>
+<div class="flex flex-1 flex-col justify-center gap-0.5">
+<p class="text-slate-900 dark:text-white text-base font-semibold leading-normal">Conta de Luz</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal">Total: R$ 180,00</p>
+<p class="text-primary dark:text-violet-400 text-sm font-semibold leading-normal">Totalmente Pago</p>
+</div>
+<div class="shrink-0 flex items-center gap-2">
+<p class="text-primary dark:text-violet-400 text-sm font-bold leading-normal">100%</p>
+<div class="w-16 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-700">
+<div class="h-2 rounded-full bg-primary dark:bg-violet-400" style="width: 100%;"></div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-white dark:bg-[#1C1A2E] p-3 rounded-xl shadow-sm">
+<div class="flex items-center justify-center rounded-lg bg-red-100 dark:bg-red-500/20 shrink-0 size-12 text-red-600 dark:text-red-500">
+<span class="material-symbols-outlined">drag_indicator</span>
+</div>
+<div class="flex flex-1 flex-col justify-center gap-0.5">
+<p class="text-slate-900 dark:text-white text-base font-semibold leading-normal">Gastos Avulsos</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal">Total: R$ 750,00</p>
+</div>
+<div class="shrink-0 flex items-center gap-2">
+<p class="text-primary dark:text-violet-400 text-sm font-bold leading-normal">100%</p>
+<div class="w-16 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-700">
+<div class="h-2 rounded-full bg-primary dark:bg-violet-400" style="width: 100%;"></div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<div class="sticky bottom-6 right-6 self-end p-4">
+<button aria-label="Adicionar nova saída" class="flex items-center justify-center w-16 h-16 bg-red-600 dark:bg-red-500 rounded-full text-white shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-600 dark:focus:ring-offset-background-dark">
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'wght' 500;">add</span>
+</button>
+</div>
+</div>
+</body></html>

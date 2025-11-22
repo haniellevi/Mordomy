@@ -1,0 +1,12 @@
+{
+  "/(auth)/login/page": "app/(auth)/login/page.js",
+  "/(dashboard)/[year]/[month]/expenses/page": "app/(dashboard)/[year]/[month]/expenses/page.js",
+  "/(dashboard)/[year]/[month]/incomes/page": "app/(dashboard)/[year]/[month]/incomes/page.js",
+  "/(dashboard)/[year]/[month]/investments/page": "app/(dashboard)/[year]/[month]/investments/page.js",
+  "/(dashboard)/[year]/[month]/misc-expenses/page": "app/(dashboard)/[year]/[month]/misc-expenses/page.js",
+  "/(dashboard)/[year]/[month]/page": "app/(dashboard)/[year]/[month]/page.js",
+  "/(dashboard)/page": "app/(dashboard)/page.js",
+  "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
+  "/api/incomes/route": "app/api/incomes/route.js",
+  "/api/months/duplicate/route": "app/api/months/duplicate/route.js"
+}

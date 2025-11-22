@@ -1,0 +1,93 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  name      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  months    Month[]
+}
+
+model Month {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  month     Int
+  year      Int
+  isOpen    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  incomes      Income[]
+  expenses     Expense[]
+  investments  Investment[]
+  miscExpenses MiscExpense[]
+
+  @@unique([userId, month, year])
+}
+
+model Income {
+  id          String   @id @default(uuid())
+  monthId     String
+  month       Month    @relation(fields: [monthId], references: [id], onDelete: Cascade)
+  description String
+  amount      Decimal  @db.Decimal(10, 2)
+  date        DateTime
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+enum ExpenseType {
+  STANDARD
+  TITHE
+  INVESTMENT_TOTAL
+  MISC_TOTAL
+}
+
+model Expense {
+  id              String      @id @default(uuid())
+  monthId         String
+  month           Month       @relation(fields: [monthId], references: [id], onDelete: Cascade)
+  description     String
+  totalAmount     Decimal     @db.Decimal(10, 2)
+  paidAmount      Decimal     @db.Decimal(10, 2) @default(0)
+  date            DateTime?
+  order           Int         @default(0)
+  type            ExpenseType @default(STANDARD)
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+}
+
+model Investment {
+  id          String   @id @default(uuid())
+  monthId     String
+  month       Month    @relation(fields: [monthId], references: [id], onDelete: Cascade)
+  description String
+  amount      Decimal  @db.Decimal(10, 2)
+  date        DateTime?
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model MiscExpense {
+  id          String   @id @default(uuid())
+  monthId     String
+  month       Month    @relation(fields: [monthId], references: [id], onDelete: Cascade)
+  description String
+  amount      Decimal  @db.Decimal(10, 2)
+  date        DateTime?
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

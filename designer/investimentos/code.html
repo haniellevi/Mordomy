@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Registrar Investimentos</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": {
+              "DEFAULT": "#7C3AED", // Purple-600
+              "50": "#F5F3FF",
+              "100": "#EDE9FE",
+              "200": "#DDD6FE",
+              "300": "#C4B5FD",
+              "400": "#A78BFA",
+              "500": "#8B5CF6",
+              "600": "#7C3AED",
+              "700": "#6D28D9",
+              "800": "#5B21B6",
+              "900": "#4C1D95",
+              "950": "#2E1065"
+            },
+            "success": {
+              "DEFAULT": "#22C55E", // Green-500
+              "50": "#F0FDF4",
+              "100": "#DCFCE7",
+              "200": "#BBF7D0",
+              "300": "#86EFAC",
+              "400": "#4ADE80",
+              "500": "#22C55E",
+              "600": "#16A34A",
+              "700": "#15803D",
+              "800": "#166534",
+              "900": "#14532D",
+              "950": "#052E16"
+            },
+            "background-light": "#f6f8f6",
+            "background-dark": "#0C0A12",
+          },
+          fontFamily: {
+            "display": ["Manrope", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display bg-background-light dark:bg-background-dark">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<header class="flex shrink-0 items-center justify-between border-b border-white/10 bg-background-light dark:bg-background-dark p-4 sticky top-0 z-10">
+<button class="text-gray-800 dark:text-white flex size-10 items-center justify-center rounded-full">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h2 class="flex-1 text-center text-lg font-bold leading-tight tracking-[-0.015em] text-gray-900 dark:text-white">Registrar Investimentos</h2>
+<div class="size-10"></div>
+</header>
+<main class="flex-1 px-4 py-6">
+<h1 class="text-gray-900 dark:text-white tracking-tight text-[32px] font-bold leading-tight text-left pb-4">Investimentos de Junho</h1>
+<div class="space-y-4">
+<label class="flex flex-col">
+<p class="pb-2 text-base font-medium leading-normal text-gray-700 dark:text-gray-300">Descrição do Ativo</p>
+<input class="form-input flex h-14 w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg border border-gray-300 dark:border-white/20 bg-white dark:bg-[#1C162D] p-[15px] text-base font-normal leading-normal text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:border-success-500 focus:ring-success-500" placeholder="Ex: Ações da Empresa X" value=""/>
+</label>
+<label class="flex flex-col">
+<p class="pb-2 text-base font-medium leading-normal text-gray-700 dark:text-gray-300">Valor (R$)</p>
+<input class="form-input flex h-14 w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg border border-gray-300 dark:border-white/20 bg-white dark:bg-[#1C162D] p-[15px] text-base font-normal leading-normal text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:border-success-500 focus:ring-success-500" placeholder="0,00" value=""/>
+</label>
+<button class="flex h-12 min-w-[84px] w-full cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg bg-success-950/50 px-5 text-success-300 text-base font-bold leading-normal tracking-[0.015em]">
+<span class="material-symbols-outlined text-success-300">add_circle</span>
+<span class="truncate">Adicionar Item</span>
+</button>
+</div>
+<div class="my-8 h-px bg-gray-200 dark:bg-white/10"></div>
+<div class="space-y-4">
+<div class="grid grid-cols-[2rem_1fr_auto] gap-4 px-2">
+<span class="text-xs font-semibold uppercase text-gray-500 dark:text-gray-400 text-left">Nº</span>
+<span class="text-xs font-semibold uppercase text-gray-500 dark:text-gray-400 text-left">Descrição</span>
+<span class="text-xs font-semibold uppercase text-gray-500 dark:text-gray-400 text-right">Valor</span>
+</div>
+<div class="grid grid-cols-[2rem_1fr_auto_2.5rem] items-center gap-4 rounded-lg bg-white dark:bg-[#1C162D] p-3">
+<span class="text-sm font-medium text-gray-500 dark:text-gray-400">01</span>
+<span class="truncate text-base text-gray-900 dark:text-white">Ações da Empresa X</span>
+<span class="text-right text-base font-medium text-success-700 dark:text-success-300">R$ 500,00</span>
+<button class="flex items-center justify-center text-gray-400 hover:text-red-500 dark:text-gray-500 dark:hover:text-red-400">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+</div>
+<div class="grid grid-cols-[2rem_1fr_auto_2.5rem] items-center gap-4 rounded-lg bg-white dark:bg-[#1C162D] p-3">
+<span class="text-sm font-medium text-gray-500 dark:text-gray-400">02</span>
+<span class="truncate text-base text-gray-900 dark:text-white">Fundo Imobiliário ABC</span>
+<span class="text-right text-base font-medium text-success-700 dark:text-success-300">R$ 1.250,75</span>
+<button class="flex items-center justify-center text-gray-400 hover:text-red-500 dark:text-gray-500 dark:hover:text-red-400">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+</div>
+</div>
+</main>
+<footer class="sticky bottom-0 mt-auto w-full space-y-4 border-t border-gray-200 dark:border-white/10 bg-background-light dark:bg-background-dark p-4 pb-6">
+<div class="flex items-baseline justify-between">
+<p class="text-base font-medium text-gray-600 dark:text-gray-300">Total do Mês</p>
+<p class="text-3xl font-bold text-success-600 dark:text-success-300">R$ 1.750,75</p>
+</div>
+<button class="flex h-14 w-full cursor-pointer items-center justify-center overflow-hidden rounded-xl bg-success-600 px-5 text-white text-base font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">Confirmar e Registrar Investimento</span>
+</button>
+</footer>
+</div>
+</body></html>

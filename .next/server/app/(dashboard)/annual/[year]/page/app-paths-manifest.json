@@ -1,0 +1,3 @@
+{
+  "/(dashboard)/annual/[year]/page": "app/(dashboard)/annual/[year]/page.js"
+}
