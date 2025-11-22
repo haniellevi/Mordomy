@@ -392,11 +392,29 @@ async function MonthPage({ params }) {
     const previousMonth = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$month$2d$utils$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["findPreviousMonth"])(year, month, sortedMonths);
     const nextMonth = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$month$2d$utils$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["findNextMonth"])(year, month, sortedMonths);
     const canDelete = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$month$2d$utils$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["canDeleteMonth"])(year, month);
-    // Calculate totals
-    const totalIncome = monthData.incomes.reduce((sum, income)=>sum + Number(income.amount), 0);
-    const totalExpensePaid = monthData.expenses.reduce((sum, expense)=>sum + Number(expense.paidAmount), 0);
-    const totalInvestments = monthData.investments.reduce((sum, inv)=>sum + Number(inv.amount), 0);
-    const totalMiscExpenses = monthData.miscExpenses.reduce((sum, misc)=>sum + Number(misc.amount), 0);
+    // Convert Decimal fields to plain numbers for client components
+    const incomesData = monthData.incomes.map((income)=>({
+            ...income,
+            amount: Number(income.amount)
+        }));
+    const expensesData = monthData.expenses.map((expense)=>({
+            ...expense,
+            totalAmount: Number(expense.totalAmount),
+            paidAmount: Number(expense.paidAmount)
+        }));
+    const investmentsData = monthData.investments.map((inv)=>({
+            ...inv,
+            amount: Number(inv.amount)
+        }));
+    const miscExpensesData = monthData.miscExpenses.map((misc)=>({
+            ...misc,
+            amount: Number(misc.amount)
+        }));
+    // Calculate totals using the converted data
+    const totalIncome = incomesData.reduce((sum, income)=>sum + income.amount, 0);
+    const totalExpensePaid = expensesData.reduce((sum, expense)=>sum + expense.paidAmount, 0);
+    const totalInvestments = investmentsData.reduce((sum, inv)=>sum + inv.amount, 0);
+    const totalMiscExpenses = miscExpensesData.reduce((sum, misc)=>sum + misc.amount, 0);
     const balance = totalIncome - totalExpensePaid - totalInvestments - totalMiscExpenses;
     // Month name
     const monthName = new Date(year, month - 1).toLocaleString("pt-BR", {
@@ -407,7 +425,7 @@ async function MonthPage({ params }) {
         {
             title: "Entradas",
             value: totalIncome,
-            count: monthData.incomes.length,
+            count: incomesData.length,
             href: `/${yearStr}/${monthStr}/incomes`,
             icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$trending$2d$up$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__$3c$export__default__as__TrendingUp$3e$__["TrendingUp"],
             color: "text-green-600",
@@ -462,7 +480,7 @@ async function MonthPage({ params }) {
                         canDelete: canDelete
                     }, void 0, false, {
                         fileName: "[project]/src/app/(dashboard)/[year]/[month]/page.tsx",
-                        lineNumber: 137,
+                        lineNumber: 156,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -472,12 +490,12 @@ async function MonthPage({ params }) {
                             children: monthName
                         }, void 0, false, {
                             fileName: "[project]/src/app/(dashboard)/[year]/[month]/page.tsx",
-                            lineNumber: 147,
+                            lineNumber: 166,
                             columnNumber: 21
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/(dashboard)/[year]/[month]/page.tsx",
-                        lineNumber: 146,
+                        lineNumber: 165,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$finance$2f$plan$2d$next$2d$month$2d$alert$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["PlanNextMonthAlert"], {
@@ -488,7 +506,7 @@ async function MonthPage({ params }) {
                         }
                     }, void 0, false, {
                         fileName: "[project]/src/app/(dashboard)/[year]/[month]/page.tsx",
-                        lineNumber: 151,
+                        lineNumber: 170,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Card"], {
@@ -500,12 +518,12 @@ async function MonthPage({ params }) {
                                     children: "Saldo do Mês"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(dashboard)/[year]/[month]/page.tsx",
-                                    lineNumber: 156,
+                                    lineNumber: 175,
                                     columnNumber: 25
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(dashboard)/[year]/[month]/page.tsx",
-                                lineNumber: 155,
+                                lineNumber: 174,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -515,7 +533,7 @@ async function MonthPage({ params }) {
                                         children: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$utils$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["formatCurrency"])(balance)
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(dashboard)/[year]/[month]/page.tsx",
-                                        lineNumber: 161,
+                                        lineNumber: 180,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -523,19 +541,19 @@ async function MonthPage({ params }) {
                                         children: totalIncome > 0 ? `${(balance / totalIncome * 100).toFixed(1)}% do total de entradas` : "Sem entradas registradas"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(dashboard)/[year]/[month]/page.tsx",
-                                        lineNumber: 164,
+                                        lineNumber: 183,
                                         columnNumber: 25
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/(dashboard)/[year]/[month]/page.tsx",
-                                lineNumber: 160,
+                                lineNumber: 179,
                                 columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/(dashboard)/[year]/[month]/page.tsx",
-                        lineNumber: 154,
+                        lineNumber: 173,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -546,7 +564,7 @@ async function MonthPage({ params }) {
                                 children: "Categorias"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(dashboard)/[year]/[month]/page.tsx",
-                                lineNumber: 172,
+                                lineNumber: 191,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -569,12 +587,12 @@ async function MonthPage({ params }) {
                                                                     className: `h-5 w-5 ${category.color}`
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/app/(dashboard)/[year]/[month]/page.tsx",
-                                                                    lineNumber: 182,
+                                                                    lineNumber: 201,
                                                                     columnNumber: 53
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/(dashboard)/[year]/[month]/page.tsx",
-                                                                lineNumber: 181,
+                                                                lineNumber: 200,
                                                                 columnNumber: 49
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -584,7 +602,7 @@ async function MonthPage({ params }) {
                                                                         children: category.title
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/(dashboard)/[year]/[month]/page.tsx",
-                                                                        lineNumber: 185,
+                                                                        lineNumber: 204,
                                                                         columnNumber: 53
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -596,19 +614,19 @@ async function MonthPage({ params }) {
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/app/(dashboard)/[year]/[month]/page.tsx",
-                                                                        lineNumber: 186,
+                                                                        lineNumber: 205,
                                                                         columnNumber: 53
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/app/(dashboard)/[year]/[month]/page.tsx",
-                                                                lineNumber: 184,
+                                                                lineNumber: 203,
                                                                 columnNumber: 49
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/(dashboard)/[year]/[month]/page.tsx",
-                                                        lineNumber: 180,
+                                                        lineNumber: 199,
                                                         columnNumber: 45
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -619,54 +637,54 @@ async function MonthPage({ params }) {
                                                                 children: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$utils$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["formatCurrency"])(category.value)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/(dashboard)/[year]/[month]/page.tsx",
-                                                                lineNumber: 192,
+                                                                lineNumber: 211,
                                                                 columnNumber: 49
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$right$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronRight$3e$__["ChevronRight"], {
                                                                 className: "h-5 w-5 text-muted-foreground"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/(dashboard)/[year]/[month]/page.tsx",
-                                                                lineNumber: 195,
+                                                                lineNumber: 214,
                                                                 columnNumber: 49
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/(dashboard)/[year]/[month]/page.tsx",
-                                                        lineNumber: 191,
+                                                        lineNumber: 210,
                                                         columnNumber: 45
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/(dashboard)/[year]/[month]/page.tsx",
-                                                lineNumber: 179,
+                                                lineNumber: 198,
                                                 columnNumber: 41
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(dashboard)/[year]/[month]/page.tsx",
-                                            lineNumber: 178,
+                                            lineNumber: 197,
                                             columnNumber: 37
                                         }, this)
                                     }, category.href, false, {
                                         fileName: "[project]/src/app/(dashboard)/[year]/[month]/page.tsx",
-                                        lineNumber: 177,
+                                        lineNumber: 196,
                                         columnNumber: 33
                                     }, this);
                                 })
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(dashboard)/[year]/[month]/page.tsx",
-                                lineNumber: 173,
+                                lineNumber: 192,
                                 columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/(dashboard)/[year]/[month]/page.tsx",
-                        lineNumber: 171,
+                        lineNumber: 190,
                         columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/(dashboard)/[year]/[month]/page.tsx",
-                lineNumber: 135,
+                lineNumber: 154,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$layout$2f$bottom$2d$nav$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["BottomNav"], {
@@ -674,7 +692,7 @@ async function MonthPage({ params }) {
                 month: monthStr
             }, void 0, false, {
                 fileName: "[project]/src/app/(dashboard)/[year]/[month]/page.tsx",
-                lineNumber: 206,
+                lineNumber: 225,
                 columnNumber: 13
             }, this)
         ]

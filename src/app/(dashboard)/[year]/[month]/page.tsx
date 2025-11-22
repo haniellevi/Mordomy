@@ -74,11 +74,30 @@ export default async function MonthPage({ params }: MonthPageProps) {
     const nextMonth = findNextMonth(year, month, sortedMonths);
     const canDelete = canDeleteMonth(year, month);
 
-    // Calculate totals
-    const totalIncome = monthData.incomes.reduce((sum, income) => sum + Number(income.amount), 0);
-    const totalExpensePaid = monthData.expenses.reduce((sum, expense) => sum + Number(expense.paidAmount), 0);
-    const totalInvestments = monthData.investments.reduce((sum, inv) => sum + Number(inv.amount), 0);
-    const totalMiscExpenses = monthData.miscExpenses.reduce((sum, misc) => sum + Number(misc.amount), 0);
+    // Convert Decimal fields to plain numbers for client components
+    const incomesData = monthData.incomes.map(income => ({
+        ...income,
+        amount: Number(income.amount),
+    }));
+    const expensesData = monthData.expenses.map(expense => ({
+        ...expense,
+        totalAmount: Number(expense.totalAmount),
+        paidAmount: Number(expense.paidAmount),
+    }));
+    const investmentsData = monthData.investments.map(inv => ({
+        ...inv,
+        amount: Number(inv.amount),
+    }));
+    const miscExpensesData = monthData.miscExpenses.map(misc => ({
+        ...misc,
+        amount: Number(misc.amount),
+    }));
+
+    // Calculate totals using the converted data
+    const totalIncome = incomesData.reduce((sum, income) => sum + income.amount, 0);
+    const totalExpensePaid = expensesData.reduce((sum, expense) => sum + expense.paidAmount, 0);
+    const totalInvestments = investmentsData.reduce((sum, inv) => sum + inv.amount, 0);
+    const totalMiscExpenses = miscExpensesData.reduce((sum, misc) => sum + misc.amount, 0);
     const balance = totalIncome - totalExpensePaid - totalInvestments - totalMiscExpenses;
 
     // Month name
@@ -91,7 +110,7 @@ export default async function MonthPage({ params }: MonthPageProps) {
         {
             title: "Entradas",
             value: totalIncome,
-            count: monthData.incomes.length,
+            count: incomesData.length,
             href: `/${yearStr}/${monthStr}/incomes`,
             icon: TrendingUp,
             color: "text-green-600",
