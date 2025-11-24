@@ -10,6 +10,7 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { createClient } from "@/lib/supabase/client";
 
 interface HeaderProps {
     userName: string;
@@ -20,8 +21,9 @@ export function Header({ userName, userEmail }: HeaderProps) {
     const router = useRouter();
 
     const handleLogout = async () => {
-        await fetch("/api/auth/logout", { method: "POST" });
-        router.push("/login");
+        const supabase = createClient();
+        await supabase.auth.signOut();
+        router.push("/landing");
         router.refresh();
     };
 
@@ -70,11 +72,11 @@ export function Header({ userName, userEmail }: HeaderProps) {
                             </div>
                         </DropdownMenuLabel>
                         <DropdownMenuSeparator />
-                        <DropdownMenuItem>
+                        <DropdownMenuItem disabled className="opacity-50 cursor-not-allowed">
                             <User className="mr-2 h-4 w-4" />
                             <span>Meu Perfil</span>
                         </DropdownMenuItem>
-                        <DropdownMenuItem>
+                        <DropdownMenuItem disabled className="opacity-50 cursor-not-allowed">
                             <Settings className="mr-2 h-4 w-4" />
                             <span>Configurações</span>
                         </DropdownMenuItem>
