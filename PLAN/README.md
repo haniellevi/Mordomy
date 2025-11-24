@@ -4,3 +4,4 @@ Esta pasta contém todos os documentos de planejamento, arquitetura e guias de c
 
 ## Arquivos
 -   `DATABASE_SETUP.md`: Guia para configuração e sincronização dos bancos de dados Local e Supabase.
+-   `TESTSPRITE_SETUP.md`: Guia para configuração e uso do TestSprite MCP para testes automatizados.

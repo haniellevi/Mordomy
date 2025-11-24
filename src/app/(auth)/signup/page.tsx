@@ -9,6 +9,8 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { AlertCircle, CheckCircle2, Loader2 } from "lucide-react";
 
+import { createClient } from "@/lib/supabase/client";
+
 export default function SignupPage() {
     const router = useRouter();
     const [formData, setFormData] = useState({
@@ -39,22 +41,19 @@ export default function SignupPage() {
         }
 
         try {
-            const response = await fetch("/api/auth/signup", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
+            const supabase = createClient();
+            const { error } = await supabase.auth.signUp({
+                email: formData.email,
+                password: formData.password,
+                options: {
+                    data: {
+                        name: formData.name,
+                    },
                 },
-                body: JSON.stringify({
-                    name: formData.name,
-                    email: formData.email,
-                    password: formData.password,
-                }),
             });
 
-            const data = await response.json();
-
-            if (!response.ok) {
-                throw new Error(data.error || "Erro ao criar conta");
+            if (error) {
+                throw error;
             }
 
             setSuccess(true);

@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 14, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/hanie/OneDrive/Documentos/workspace/Mordomy/src/app/page.tsx"],"sourcesContent":["export default function Home() {\r\n    return (\r\n        <main className=\"flex min-h-screen flex-col items-center justify-center p-24\">\r\n            <h1 className=\"text-4xl font-bold\">Mordomy</h1>\r\n            <p className=\"text-xl mt-4\">Controle Financeiro Pessoal</p>\r\n        </main>\r\n    );\r\n}\r\n"],"names":[],"mappings":";;;;;;AAAe,SAAS;IACpB,qBACI,8OAAC;QAAK,WAAU;;0BACZ,8OAAC;gBAAG,WAAU;0BAAqB;;;;;;0BACnC,8OAAC;gBAAE,WAAU;0BAAe;;;;;;;;;;;;AAGxC"}}]
-}
