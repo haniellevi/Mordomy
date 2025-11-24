@@ -7,8 +7,6 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 
-import { createClient } from "@/lib/supabase/client";
-
 export default function LoginPage() {
     const router = useRouter();
     const [email, setEmail] = useState("");
@@ -20,16 +18,16 @@ export default function LoginPage() {
         setError("");
 
         try {
-            const supabase = createClient();
-            const { error } = await supabase.auth.signInWithPassword({
-                email,
-                password,
+            const res = await fetch("/api/auth/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, password }),
             });
 
-            if (error) {
-                setError(error.message === "Invalid login credentials"
-                    ? "Email ou senha inválidos"
-                    : error.message);
+            const data = await res.json();
+
+            if (!res.ok) {
+                setError(data.error || "Email ou senha inválidos");
                 return;
             }
 

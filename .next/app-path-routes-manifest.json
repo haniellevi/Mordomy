@@ -11,6 +11,8 @@
   "/(dashboard)/page": "/",
   "/_global-error/page": "/_global-error",
   "/_not-found/page": "/_not-found",
+  "/api/auth/[...nextauth]/route": "/api/auth/[...nextauth]",
+  "/api/auth/signup/route": "/api/auth/signup",
   "/api/expenses/[id]/route": "/api/expenses/[id]",
   "/api/expenses/route": "/api/expenses",
   "/api/incomes/[id]/route": "/api/incomes/[id]",
@@ -22,6 +24,7 @@
   "/api/months/[id]/route": "/api/months/[id]",
   "/api/months/duplicate/route": "/api/months/duplicate",
   "/api/months/route": "/api/months",
+  "/api/register/route": "/api/register",
   "/landing/page": "/landing",
   "/page": "/"
 }

@@ -15,7 +15,7 @@ export default async function DashboardLayout({
 
     return (
         <div className="min-h-screen bg-background">
-            <Header userName={user.user_metadata?.name || "Usuário"} userEmail={user.email || ""} />
+            <Header userName={user.name || "Usuário"} userEmail={user.email || ""} />
             <main className="pb-20">{children}</main>
         </div>
     );
